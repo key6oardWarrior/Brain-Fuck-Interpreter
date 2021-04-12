@@ -46,12 +46,12 @@ public:
     /*
     * add 0x1 to *mp
     */
-    inline void increment(void) { *(this->mp) += 0x1; }
+    inline void increment(void) { ++*(this->mp); }
 
     /*
     * subtract 0x1 from *mp
     */
-    inline void decrement(void) { *(this->mp) -= 0x1; }
+    inline void decrement(void) { --*(this->mp); }
 };
 
 #endif // !ENVIRONMENT_H
