@@ -11,8 +11,8 @@
   <li>If you start a loop it must end on the same line</li>
 </ol>
 
+<p>Example of good BF code</p>
 ![image](https://user-images.githubusercontent.com/42715109/114440784-88f4a200-9b98-11eb-9326-3fbd0075d954.png)
-
 
   </body>
 </html>
