@@ -1,4 +1,4 @@
-#include "..\pch.h"
+#include "pch.h"
 
 std::vector<char>::iterator Environment::getMP(void) const {
 				return mp;
