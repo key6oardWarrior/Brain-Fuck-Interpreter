@@ -8,6 +8,7 @@ private:
     std::string codeLine;
     int lineNum = 1;
     bool isSameLine = false;
+    bool isMaxNegative = false;
 
 public:
     /**
