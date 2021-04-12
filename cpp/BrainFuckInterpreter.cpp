@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "..\pch.h"
 
 bool Interpreter::isBalanced(int i) const {
     int balance = 1;
