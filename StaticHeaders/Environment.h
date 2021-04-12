@@ -52,10 +52,6 @@ public:
     * subtract 0x1 from *mp
     */
     inline void decrement(void) { *(this->mp) -= 0x1; }
-
-    /*
-    * @return size of 
-    */
 };
 
 #endif // !ENVIRONMENT_H
