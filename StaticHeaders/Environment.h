@@ -8,7 +8,7 @@ private:
     std::vector<char>::iterator mp;
 
 public:
-    Environment() : memoryPointer(3000) {
+    Environment() : memoryPointer(30000) {
         mp = memoryPointer.begin();
     }
 
