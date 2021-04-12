@@ -1,6 +1,5 @@
 #include "pch.h"
 
-
 int main(void) {
     std::string fileName = "";
 
