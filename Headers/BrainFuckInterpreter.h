@@ -6,7 +6,7 @@ class Interpreter {
 private:
     std::fstream code;
     std::string codeLine;
-    int lineNum = 0;
+    int lineNum = 1;
     bool isSameLine = false;
 
 public:
