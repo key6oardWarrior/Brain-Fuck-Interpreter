@@ -11,7 +11,7 @@ private:
     bool isMaxNegative = false;
 
 public:
-    /**
+    /*
     * open the users file via std::fstream
     *
     * @param file path 
@@ -23,13 +23,13 @@ public:
     }
 
 public:
-    /**
+    /*
     * display error message or display error code 0
     */
     void main(void);
 
 private:
-    /**
+    /*
     * ensure all open brackets have an close bracket 
     *
     * @param current line that is being read
@@ -37,7 +37,7 @@ private:
     */
     bool isBalanced(int) const;
 
-    /**
+    /*
     * print the error message's char, char's index, and what line it is on
     * 
     * @param the char that caused the error
@@ -46,7 +46,7 @@ private:
     */
     void printErrorMessageDescription(const char&, const int&) const;
 
-    /**
+    /*
     * determin if the symbol in the bf file is legal
     * if it is then carry out instructions
     * else return int that correlates to enum class ErrorMessage
@@ -57,7 +57,7 @@ private:
     */
     ErrorMessage isSymbolLegal(Environment&);
 
-    /**
+    /*
     * interpret code in a bf file
     * 
     * @return ErrorMessage
