@@ -59,12 +59,20 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                     printErrorMessageDescription(codeLine[i], i);
                     return ErrorMessage::stackOverFlow;
                 }
+                isMaxNegative = false;
+
                 break;
             case '-': // decrement
                 env.decrement();
-                if((*env.getMP() == -0x80)) {
+                if(isMaxNegative) {
                     printErrorMessageDescription(codeLine[i], i);
                     return ErrorMessage::stackOverFlow;
+                }
+
+                if((*env.getMP() == -0x80)) {
+                    isMaxNegative = true;
+                    // printErrorMessageDescription(codeLine[i], i);
+                    // return ErrorMessage::stackOverFlow;
                 }
                 break;
             case '.': // output
