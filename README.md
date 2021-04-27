@@ -16,7 +16,7 @@
 
 <p>Example of good BF code</p>
 
-![image](https://user-images.githubusercontent.com/42715109/114440784-88f4a200-9b98-11eb-9326-3fbd0075d954.png)
+![image](https://user-images.githubusercontent.com/42715109/116291596-c47b9880-a762-11eb-8c5b-9631dcfd807c.png)
 
   </body>
 </html>
