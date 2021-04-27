@@ -10,8 +10,8 @@
   <li>This interpreter does not read white spaces</li>
   <li>If you start a loop it must end on the same line</li>
   <li>There are 30,000 memory blocks</li>
-  <li>Each memory block cannot go over 0x7f (127)</li>
-  <li>Each memory block cannot go below -0x80 (-128)</li>
+  <li>Each memory block cannot be more than 0x7f (127)</li>
+  <li>Each memory block cannot be less than -0x80 (-128)</li>
 </ol>
 
 <p>Example of good BF code</p>
