@@ -20,7 +20,7 @@ bool Interpreter::isBalanced(int i) const {
         }
     } while(i < codeLine.length());
 
-    return (balance == 0) ? true : false;
+    return true;
 }
 
 void Interpreter::printErrorMessageDescription(const char& userChar, const int& charNum) const {
