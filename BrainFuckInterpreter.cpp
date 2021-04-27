@@ -75,9 +75,9 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                     // return ErrorMessage::stackOverFlow;
                 }
                 break;
-            case '.': // output
+            case '.': // print
                 {
-                    const auto mp = *env.getMP();
+                    const char mp = *env.getMP();
 
                     if(isprint(mp)) {
                         std::cout << mp;
