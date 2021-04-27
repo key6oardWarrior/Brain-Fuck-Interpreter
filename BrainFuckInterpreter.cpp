@@ -54,20 +54,24 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 }
                 break;
             case '+': // increment
-                isMaxNegative = false;
-
-                env.increment();
-                if(*env.getMP() > 0xff) {
+                if(isMaxPositive) {
                     printErrorMessageDescription(codeLine[i], i);
                     return ErrorMessage::stackOverFlow;
                 }
+                isMaxNegative = false;
+                env.increment();
+
+                if(*env.getMP() == 0x7f) {
+                    isMaxPositive = true;
+                }
                 break;
             case '-': // decrement
-                env.decrement();
                 if(isMaxNegative) {
                     printErrorMessageDescription(codeLine[i], i);
                     return ErrorMessage::stackOverFlow;
                 }
+                isMaxPositive = false;
+                env.decrement();
 
                 if((*env.getMP() == -0x80)) {
                     isMaxNegative = true;
