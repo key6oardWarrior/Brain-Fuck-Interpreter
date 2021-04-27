@@ -54,13 +54,13 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 }
                 break;
             case '+': // increment
+                isMaxNegative = false;
+
                 env.increment();
-                if(*env.getMP() == 0xffffffff) {
+                if(*env.getMP() > 0xff) {
                     printErrorMessageDescription(codeLine[i], i);
                     return ErrorMessage::stackOverFlow;
                 }
-                isMaxNegative = false;
-
                 break;
             case '-': // decrement
                 env.decrement();
@@ -71,8 +71,6 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
 
                 if((*env.getMP() == -0x80)) {
                     isMaxNegative = true;
-                    // printErrorMessageDescription(codeLine[i], i);
-                    // return ErrorMessage::stackOverFlow;
                 }
                 break;
             case '.': // print
