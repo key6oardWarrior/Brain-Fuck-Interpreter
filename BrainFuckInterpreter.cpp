@@ -3,8 +3,6 @@
 bool Interpreter::isBalanced(int i) const {
     if(isSameLine) {
         return true;
-    } else if(codeLine[i] == ']') {
-        return false;
     }
 
     int balance = 1;
@@ -33,10 +31,9 @@ void Interpreter::printErrorMessageDescription(const char& userChar, const int& 
 }
 
 ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
-    std::vector<int> loopIndexes;
+    std::list<int> loopIndexes;
 
     for(int i = 0; i < codeLine.length(); i++) {
-
         switch(codeLine[i]) {
             case '\n': // ignore whitespace
                 return ErrorMessage::noError;
@@ -109,10 +106,10 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 }
                 isSameLine = true;
 
-                loopIndexes.push_back(i-1);
+                loopIndexes.emplace_back(i-1);
                 break;
             case ']': // end loop
-                if(isBalanced(i) == false) {
+                if(isSameLine == false) {
                     printErrorMessageDescription(codeLine[i], i);
                     return ErrorMessage::unmatchedBrackets;
                 }
