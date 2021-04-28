@@ -18,5 +18,10 @@
 
 ![image](https://user-images.githubusercontent.com/42715109/116291596-c47b9880-a762-11eb-8c5b-9631dcfd807c.png)
 
+<h2>Enviorment</h2>
+<ol>
+  <li>Built on Visual Studio 2019</li>
+  <li>Language standard: ISO C++17 Standard (/std:c++17)</li>
+
   </body>
 </html>
