@@ -4,8 +4,10 @@
 
 class Interpreter {
 private:
+    std::vector<int> loopIndexes;
     std::fstream code;
     std::string codeLine;
+
     int lineNum = 1;
     bool isSameLine = false;
     bool isMaxPositive = false;
