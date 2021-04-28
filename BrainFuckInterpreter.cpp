@@ -37,6 +37,10 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
         switch(codeLine[i]) {
             case ' ': // ignore whitespace
                 continue;
+            case '\n':
+                continue;
+            case '\t':
+                continue;
             case '>': // forward pointer
                 if(env.getMP() != (env.endMemPtr())) {
                     env.incMP();
