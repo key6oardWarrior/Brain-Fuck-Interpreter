@@ -4,7 +4,6 @@
 
 class Interpreter {
 private:
-    std::vector<int> loopIndexes;
     std::fstream code;
     std::string codeLine;
 
