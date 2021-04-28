@@ -10,7 +10,8 @@ enum class ErrorMessage {
     codeNotOpen = 1,
     invalidSymbol = 2,
     unmatchedBrackets = 3,
-    stackOverFlow = 4
+    stackOverFlow = 4,
+    integerOverFlow = 5
 };
 
 #endif // !ERRORS_H

@@ -60,7 +60,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
             case '+': // increment
                 if(isMaxPositive) {
                     printErrorMessageDescription(codeLine[i], i);
-                    return ErrorMessage::stackOverFlow;
+                    return ErrorMessage::integerOverFlow;
                 }
                 isMaxNegative = false;
                 env.increment();
@@ -72,7 +72,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
             case '-': // decrement
                 if(isMaxNegative) {
                     printErrorMessageDescription(codeLine[i], i);
-                    return ErrorMessage::stackOverFlow;
+                    return ErrorMessage::integerOverFlow;
                 }
                 isMaxPositive = false;
                 env.decrement();
@@ -154,7 +154,7 @@ void Interpreter::main(void) {
             std::cout << "code exited with error code 0." << std::endl;
             break;
         case ErrorMessage::codeNotOpen:
-            std::cout << " code exited with error code 1: Either file could not be opened or it does not exist." << std::endl;
+            std::cout << "code exited with error code 1: Either file could not be opened or it does not exist." << std::endl;
             break;
         case ErrorMessage::invalidSymbol:
             std::cout << "code exited with error code 2: invalid symbol." << std::endl;
@@ -165,5 +165,7 @@ void Interpreter::main(void) {
         case ErrorMessage::stackOverFlow:
             std::cout << "code exited with error code 4: Stack overflow occurred." << std::endl;
             break;
+        default:
+            std::cout << "code exited with error code 5: Integer overflow occurred.";
     }
 }
