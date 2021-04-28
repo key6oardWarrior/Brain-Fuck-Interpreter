@@ -65,7 +65,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 isMaxNegative = false;
                 env.increment();
 
-                if(*env.getMP() == 0x7f) {
+                if(*env.getMP() == max) {
                     isMaxPositive = true;
                 }
                 break;
@@ -77,7 +77,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 isMaxPositive = false;
                 env.decrement();
 
-                if((*env.getMP() == -0x80)) {
+                if((*env.getMP() == min)) {
                     isMaxNegative = true;
                 }
                 break;
