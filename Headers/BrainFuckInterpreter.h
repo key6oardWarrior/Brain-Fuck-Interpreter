@@ -2,8 +2,8 @@
 #ifndef BrainFuckInterpreter_H
 #define BrainFuckInterpreter_H
 
-#define max 0x7f
-#define min -0x80
+#define maxInt 0x7f
+#define minInt -0x80
 
 class Interpreter {
 private:
