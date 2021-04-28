@@ -31,27 +31,27 @@ public:
     /*
     * increment the mp pointer
     */
-    inline void incMP(void) { this->mp++; }
+    void incMP(void) { this->mp++; }
 
     /*
     * decrement the mp pointer
     */
-    inline void decMP(void) { this->mp--; }
+    void decMP(void) { this->mp--; }
 
     /*
     * @param userLetter - set user input to *mp
     */
-    inline void userInput(const char& userLetter) { *(this->mp) = userLetter; }
+    void userInput(const char& userLetter) { *(this->mp) = userLetter; }
 
     /*
     * add 0x1 to *mp
     */
-    inline void increment(void) { ++*(this->mp); }
+    void increment(void) { ++*(this->mp); }
 
     /*
     * subtract 0x1 from *mp
     */
-    inline void decrement(void) { --*(this->mp); }
+    void decrement(void) { --*(this->mp); }
 };
 
 #endif // !ENVIRONMENT_H
