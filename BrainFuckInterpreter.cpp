@@ -1,11 +1,13 @@
 #include "pch.h"
 
 bool Interpreter::isBalanced(int i) const {
-    int balance = 1;
-
     if(isSameLine) {
         return true;
+    } else if(codeLine[i] == ']') {
+        return false;
     }
+
+    int balance = 1;
 
     do {
         i++;
@@ -20,7 +22,7 @@ bool Interpreter::isBalanced(int i) const {
         }
     } while(i < codeLine.length());
 
-    return true;
+    return balance == 0;
 }
 
 void Interpreter::printErrorMessageDescription(const char& userChar, const int& charNum) const {
@@ -31,15 +33,16 @@ void Interpreter::printErrorMessageDescription(const char& userChar, const int& 
 }
 
 ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
-    int startLoopIndex = 0;
+    std::vector<int> loopIndexes;
 
     for(int i = 0; i < codeLine.length(); i++) {
+
         switch(codeLine[i]) {
-            case ' ': // ignore whitespace
-                continue;
             case '\n': // ignore whitespace
-                continue;
+                return ErrorMessage::noError;
             case '\t': // ignore whitespace
+                continue;
+            case ' ': // ignore whitespace
                 continue;
             case '>': // forward pointer
                 if(env.getMP() != (env.endMemPtr())) {
@@ -106,12 +109,19 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 }
                 isSameLine = true;
 
-                startLoopIndex = i;
+                loopIndexes.push_back(i-1);
                 break;
             case ']': // end loop
-                if((*env.getMP()) != 0x0) {
-                    i = startLoopIndex;
+                if(isBalanced(i) == false) {
+                    printErrorMessageDescription(codeLine[i], i);
+                    return ErrorMessage::unmatchedBrackets;
                 }
+                isSameLine = true;
+
+                if((*env.getMP()) != 0x0) {
+                    i = loopIndexes.back();
+                }
+                loopIndexes.pop_back();
                 break;
             default:
                 printErrorMessageDescription(codeLine[i], i);
