@@ -1,10 +1,13 @@
 #include "pch.h"
 
-bool Interpreter::isBalanced(int i) const {
-    if(isSameLine) {
-        return true;
-    }
+void Interpreter::printErrorMessageDescription(const char& userChar, const int& charNum) const {
+    std::cout << std::endl << "Error:" << std::endl;
+    std::cout << "char: " << userChar << std::endl;
+    std::cout << "line number: " << lineNum << std::endl;
+    std::cout << "char index: " << charNum << std::endl;
+}
 
+bool Interpreter::isBalanced(int i) const {
     int balance = 1;
 
     do {
@@ -23,11 +26,15 @@ bool Interpreter::isBalanced(int i) const {
     return balance == 0;
 }
 
-void Interpreter::printErrorMessageDescription(const char& userChar, const int& charNum) const {
-    std::cout << std::endl << "Error:" << std::endl;
-    std::cout << "char: " << userChar << std::endl;
-    std::cout << "line number: " << lineNum << std::endl;
-    std::cout << "char index: " << charNum << std::endl;
+void Interpreter::goToEnd(int& i) const {
+    int open = codeLine.find('[', i);
+    int close = codeLine.find(']', i);
+
+    while((open < close) && (open > -1)) {
+        open = codeLine.find('[', ++i);
+        close = codeLine.find(']', i);
+    }
+    i = close;
 }
 
 ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
@@ -65,7 +72,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 isMaxNegative = false;
                 env.increment();
 
-                if(*env.getMP() == max) {
+                if(*env.getMP() == maxInt) {
                     isMaxPositive = true;
                 }
                 break;
@@ -77,7 +84,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 isMaxPositive = false;
                 env.decrement();
 
-                if((*env.getMP() == min)) {
+                if((*env.getMP() == minInt)) {
                     isMaxNegative = true;
                 }
                 break;
@@ -95,30 +102,37 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 break;
             case ',': // user input
                 char userLetter;
-
+                
                 std::cin >> userLetter;
                 env.userInput(userLetter);
                 break;
             case '[': // start loop
-                if(isBalanced(i) == false) {
-                    printErrorMessageDescription(codeLine[i], i);
-                    return ErrorMessage::unmatchedBrackets;
+                if(isSameLine == false) {
+                    if(isBalanced(i) == false) {
+                        printErrorMessageDescription(codeLine[i], i);
+                        return ErrorMessage::unmatchedBrackets;
+                    }
+                    isSameLine = true;
                 }
-                isSameLine = true;
 
-                loopIndexes.emplace_back(i-1);
+                if(*env.getMP() == 0x0) {
+                    goToEnd(i);
+                    break;
+                }
+
+                loopIndexes.emplace_back(i);
                 break;
             case ']': // end loop
                 if(isSameLine == false) {
                     printErrorMessageDescription(codeLine[i], i);
                     return ErrorMessage::unmatchedBrackets;
                 }
-                isSameLine = true;
 
-                if((*env.getMP()) != 0x0) {
+                if(*env.getMP() != 0x0) {
                     i = loopIndexes.back();
+                } else if(loopIndexes.size() > 0) {
+                    loopIndexes.pop_back();
                 }
-                loopIndexes.pop_back();
                 break;
             default:
                 printErrorMessageDescription(codeLine[i], i);

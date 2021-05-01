@@ -37,6 +37,13 @@ private:
     bool isBalanced(int) const;
 
     /*
+    * Go to end of loop
+    * 
+    * @param starting char index
+    */
+    void goToEnd(int&) const;
+
+    /*
     * print the error message's char, char's index, and what line it is on
     *
     * @param the char that caused the error
