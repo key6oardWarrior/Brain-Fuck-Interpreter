@@ -157,7 +157,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
 
 ErrorMessage Interpreter::interpret() {
     Environment env;
-    ErrorMessage errorMsg;
+    ErrorMessage errorMsg = ErrorMessage::noError;
 
     if(code.is_open()) {
         do {
