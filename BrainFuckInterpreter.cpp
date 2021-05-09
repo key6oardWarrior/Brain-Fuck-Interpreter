@@ -18,7 +18,7 @@ bool Interpreter::isBalanced(int i) const {
         } else if(codeLine[i] == ']') {
             balance--;
 
-			if(balance < 0) {
+	    if(balance < 0) {
                 return 0;
             }
         }
@@ -157,7 +157,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
 
 ErrorMessage Interpreter::interpret() {
     Environment env;
-    ErrorMessage errorMsg;
+    ErrorMessage errorMsg = ErrorMessage::noError;
 
     if(code.is_open()) {
         do {
