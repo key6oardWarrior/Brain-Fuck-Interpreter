@@ -27,14 +27,14 @@ bool Interpreter::isBalanced(int i) const {
     return balance == 0;
 }
 
-void Interpreter::goToEnd(int& i) const {
+void Interpreter::goToEnd(int& charIndex) const {
     int cnt = 1;
 
     while(cnt > 0) {
-        i++;
-        if(codeLine[i] == '[') {
+        charIndex++;
+        if(codeLine[charIndex] == '[') {
             cnt++;
-        } else if (codeLine[i] == ']') {
+        } else if (codeLine[charIndex] == ']') {
             cnt--;
         }
     }
