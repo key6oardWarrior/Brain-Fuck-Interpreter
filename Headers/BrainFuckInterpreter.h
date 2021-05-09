@@ -9,6 +9,7 @@ class Interpreter {
 private:
     std::fstream code;
     std::string codeLine;
+
     Environment* env = new Environment();
     const std::vector<char>::const_iterator begining = env->beginMemPtr();
     const std::vector<char>::const_iterator end = env->endMemPtr();
