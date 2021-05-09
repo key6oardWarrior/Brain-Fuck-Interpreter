@@ -21,7 +21,9 @@
 <h2>Enviorment</h2>
 <ol>
   <li>Built in Visual Studio 2019</li>
-  <li>Language standard: ISO C++17 Standard (/std:c++17)</li>
+  <li>C++ Language standard: ISO C++17 Standard (/std:c++17)</li>
+  <li>C Language standard: ISO C17 (2018) Standard (/std:c17)</li>
+  
 
   </body>
 </html>
