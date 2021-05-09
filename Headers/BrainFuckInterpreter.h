@@ -68,7 +68,7 @@ private:
     * @param keep track of the bf code's line number
     * @return the error code to be displayed
     */
-    ErrorMessage isSymbolLegal();
+    ErrorMessage isSymbolLegal(void);
 
     /*
     * interpret code in a bf file
