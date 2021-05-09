@@ -19,8 +19,8 @@ bool Interpreter::isBalanced(int i) const {
             balance--;
 
 			if(balance < 0) {
-            	return 0;
-        	}
+                return 0;
+            }
         }
     } while(i < codeLine.length());
 
@@ -45,11 +45,12 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
 
     for(int i = 0; i < codeLine.length(); i++) {
         switch(codeLine[i]) {
-            case '\n': // ignore whitespace
+            // ignore whitespace
+            case '\n':
                 return ErrorMessage::noError;
-            case '\t': // ignore whitespace
+            case '\t':
                 continue;
-            case ' ': // ignore whitespace
+            case ' ':
                 continue;
 
             case '>': // forward pointer
