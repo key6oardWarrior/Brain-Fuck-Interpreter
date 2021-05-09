@@ -18,7 +18,7 @@ bool Interpreter::isBalanced(int i) const {
         } else if(codeLine[i] == ']') {
             balance--;
 
-			if(balance < 0) {
+	    if(balance < 0) {
                 return 0;
             }
         }
