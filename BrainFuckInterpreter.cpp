@@ -17,10 +17,10 @@ bool Interpreter::isBalanced(int i) const {
             balance++;
         } else if(codeLine[i] == ']') {
             balance--;
-        }
 
-        if(balance < 0) {
-            return false;
+			if(balance < 0) {
+            	return 0;
+        	}
         }
     } while(i < codeLine.length());
 
@@ -51,6 +51,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 continue;
             case ' ': // ignore whitespace
                 continue;
+
             case '>': // forward pointer
                 if(env.getMP() != env.endMemPtr()) {
                     env.incMP();
@@ -59,6 +60,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                     return ErrorMessage::stackOverFlow;
                 }
                 break;
+
             case '<': // backward pointer
                 if(env.getMP() != env.beginMemPtr()) {
                     env.decMP();
@@ -67,30 +69,33 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                     return ErrorMessage::stackOverFlow;
                 }
                 break;
+
             case '+': // increment
                 if(isMaxPositive) {
                     printErrorMessageDescription(codeLine[i], i);
                     return ErrorMessage::integerOverFlow;
                 }
-                isMaxNegative = false;
+                isMaxNegative = 0;
                 env.increment();
 
                 if(*env.getMP() == maxInt) {
-                    isMaxPositive = true;
+                    isMaxPositive = 1;
                 }
                 break;
+
             case '-': // decrement
                 if(isMaxNegative) {
                     printErrorMessageDescription(codeLine[i], i);
                     return ErrorMessage::integerOverFlow;
                 }
-                isMaxPositive = false;
+                isMaxPositive = 0;
                 env.decrement();
 
                 if(*env.getMP() == minInt) {
-                    isMaxNegative = true;
+                    isMaxNegative = 1;
                 }
                 break;
+
             case '.': // print
                 {
                     const char mp = *env.getMP();
@@ -103,19 +108,21 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                     }
                 }
                 break;
+
             case ',': // user input
                 char userLetter;
                 
                 std::cin >> userLetter;
                 env.userInput(userLetter);
                 break;
+
             case '[': // start loop
-                if(isSameLine == false) {
-                    if(isBalanced(i) == false) {
+                if(isSameLine == 0) {
+                    if(isBalanced(i) == 0) {
                         printErrorMessageDescription(codeLine[i], i);
                         return ErrorMessage::unmatchedBrackets;
                     }
-                    isSameLine = true;
+                    isSameLine = 1;
                 }
 
                 if(*env.getMP() == 0x0) {
@@ -125,8 +132,9 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
 
                 loopIndexes.push(i);
                 break;
+
             case ']': // end loop
-                if(isSameLine == false) {
+                if(isSameLine == 0) {
                     printErrorMessageDescription(codeLine[i], i);
                     return ErrorMessage::unmatchedBrackets;
                 }
@@ -137,6 +145,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                     loopIndexes.pop();
                 }
                 break;
+
             default:
                 printErrorMessageDescription(codeLine[i], i);
                 return ErrorMessage::invalidSymbol;
@@ -153,9 +162,9 @@ ErrorMessage Interpreter::interpret() {
         do {
             std::getline(code, codeLine);
             errorMsg = isSymbolLegal(env);
-            isSameLine = false;
+            isSameLine = 0;
             lineNum++;
-        } while((code.eof() == false) && (errorMsg == ErrorMessage::noError));
+        } while((code.eof() == 0) && (errorMsg == ErrorMessage::noError));
     } else {
         return ErrorMessage::codeNotOpen;
     }

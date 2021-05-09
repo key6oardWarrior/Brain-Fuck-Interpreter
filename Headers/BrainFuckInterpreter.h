@@ -11,9 +11,9 @@ private:
     std::string codeLine;
 
     int lineNum = 1;
-    bool isSameLine = false;
-    bool isMaxPositive = false;
-    bool isMaxNegative = false;
+    bool isSameLine = 0;
+    bool isMaxPositive = 0;
+    bool isMaxNegative = 0;
 
 public:
     /*
