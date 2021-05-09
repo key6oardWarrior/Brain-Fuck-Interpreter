@@ -1,10 +1,11 @@
 #include "pch.h"
+#include <stack>
 
-void Interpreter::printErrorMessageDescription(const char& userChar, const int& charNum) const {
+void Interpreter::printErrorMessageDescription(const char& userChar, const int& charIndex) const {
     std::cout << std::endl << "Error:" << std::endl;
     std::cout << "char: " << userChar << std::endl;
     std::cout << "line number: " << lineNum << std::endl;
-    std::cout << "char index: " << charNum << std::endl;
+    std::cout << "char index: " << charIndex << std::endl;
 }
 
 bool Interpreter::isBalanced(int i) const {
@@ -27,18 +28,20 @@ bool Interpreter::isBalanced(int i) const {
 }
 
 void Interpreter::goToEnd(int& i) const {
-    int open = codeLine.find('[', i);
-    int close = codeLine.find(']', i);
+    int cnt = 1;
 
-    while((open < close) && (open > -1)) {
-        open = codeLine.find('[', ++i);
-        close = codeLine.find(']', i);
+    while(cnt > 0) {
+        i++;
+        if(codeLine[i] == '[') {
+            cnt++;
+        } else if (codeLine[i] == ']') {
+            cnt--;
+        }
     }
-    i = close;
 }
 
 ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
-    std::list<int> loopIndexes;
+    std::stack<int> loopIndexes;
 
     for(int i = 0; i < codeLine.length(); i++) {
         switch(codeLine[i]) {
@@ -49,7 +52,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
             case ' ': // ignore whitespace
                 continue;
             case '>': // forward pointer
-                if(env.getMP() != (env.endMemPtr())) {
+                if(env.getMP() != env.endMemPtr()) {
                     env.incMP();
                 } else {
                     printErrorMessageDescription(codeLine[i], i);
@@ -84,7 +87,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 isMaxPositive = false;
                 env.decrement();
 
-                if((*env.getMP() == minInt)) {
+                if(*env.getMP() == minInt) {
                     isMaxNegative = true;
                 }
                 break;
@@ -120,7 +123,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                     break;
                 }
 
-                loopIndexes.emplace_back(i);
+                loopIndexes.push(i);
                 break;
             case ']': // end loop
                 if(isSameLine == false) {
@@ -129,9 +132,9 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 }
 
                 if(*env.getMP() != 0x0) {
-                    i = loopIndexes.back();
+                    i = loopIndexes.top();
                 } else if(loopIndexes.size() > 0) {
-                    loopIndexes.pop_back();
+                    loopIndexes.pop();
                 }
                 break;
             default:

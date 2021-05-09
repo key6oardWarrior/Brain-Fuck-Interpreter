@@ -37,7 +37,7 @@ private:
     bool isBalanced(int) const;
 
     /*
-    * Go to end of loop
+    * Go to the end of loop
     * 
     * @param starting char index
     */
