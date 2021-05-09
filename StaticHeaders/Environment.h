@@ -8,7 +8,7 @@ private:
     std::vector<char>::iterator mp;
 
 public:
-    Environment() : memoryPointer(0x7530) {
+    Environment(void) : memoryPointer(0x752f) {
         mp = memoryPointer.begin();
     }
 
@@ -31,27 +31,27 @@ public:
     /*
     * increment the mp pointer
     */
-    void incMP(void) { this->mp++; }
+    void incMP(void) { mp++; }
 
     /*
     * decrement the mp pointer
     */
-    void decMP(void) { this->mp--; }
+    void decMP(void) { mp--; }
 
     /*
     * @param userLetter - set user input to *mp
     */
-    void userInput(const char& userLetter) { *(this->mp) = userLetter; }
+    void userInput(const char& userLetter) { *mp = userLetter; }
 
     /*
     * add 0x1 to *mp
     */
-    void increment(void) { ++*(this->mp); }
+    void increment(void) { ++*mp; }
 
     /*
     * subtract 0x1 from *mp
     */
-    void decrement(void) { --*(this->mp); }
+    void decrement(void) { --*mp; }
 };
 
 #endif // !ENVIRONMENT_H

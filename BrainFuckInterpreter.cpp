@@ -40,7 +40,7 @@ void Interpreter::goToEnd(int& charIndex) const {
     }
 }
 
-ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
+ErrorMessage Interpreter::isSymbolLegal(void) {
     std::stack<int> loopIndexes;
 
     for(int i = 0; i < codeLine.length(); i++) {
@@ -54,8 +54,8 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 continue;
 
             case '>': // forward pointer
-                if(env.getMP() != env.endMemPtr()) {
-                    env.incMP();
+                if(env->getMP() != end) {
+                    env->incMP();
                 } else {
                     printErrorMessageDescription(codeLine[i], i);
                     return ErrorMessage::stackOverFlow;
@@ -63,8 +63,8 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 break;
 
             case '<': // backward pointer
-                if(env.getMP() != env.beginMemPtr()) {
-                    env.decMP();
+                if(env->getMP() != begining) {
+                    env->decMP();
                 } else {
                     printErrorMessageDescription(codeLine[i], i);
                     return ErrorMessage::stackOverFlow;
@@ -77,9 +77,9 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                     return ErrorMessage::integerOverFlow;
                 }
                 isMaxNegative = 0;
-                env.increment();
+                env->increment();
 
-                if(*env.getMP() == maxInt) {
+                if(*env->getMP() == maxInt) {
                     isMaxPositive = 1;
                 }
                 break;
@@ -90,16 +90,16 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                     return ErrorMessage::integerOverFlow;
                 }
                 isMaxPositive = 0;
-                env.decrement();
+                env->decrement();
 
-                if(*env.getMP() == minInt) {
+                if(*env->getMP() == minInt) {
                     isMaxNegative = 1;
                 }
                 break;
 
             case '.': // print
                 {
-                    const char mp = *env.getMP();
+                    const char mp = *env->getMP();
 
                     if(isprint(mp)) {
                         std::cout << mp;
@@ -114,7 +114,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                 char userLetter;
                 
                 std::cin >> userLetter;
-                env.userInput(userLetter);
+                env->userInput(userLetter);
                 break;
 
             case '[': // start loop
@@ -126,7 +126,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                     isSameLine = 1;
                 }
 
-                if(*env.getMP() == 0x0) {
+                if(*env->getMP() == 0x0) {
                     goToEnd(i);
                     break;
                 }
@@ -140,7 +140,7 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
                     return ErrorMessage::unmatchedBrackets;
                 }
 
-                if(*env.getMP() != 0x0) {
+                if(*env->getMP() != 0x0) {
                     i = loopIndexes.top();
                 } else if(loopIndexes.size() > 0) {
                     loopIndexes.pop();
@@ -156,13 +156,12 @@ ErrorMessage Interpreter::isSymbolLegal(Environment& env) {
 }
 
 ErrorMessage Interpreter::interpret() {
-    Environment env;
     ErrorMessage errorMsg = ErrorMessage::noError;
 
     if(code.is_open()) {
         do {
             std::getline(code, codeLine);
-            errorMsg = isSymbolLegal(env);
+            errorMsg = isSymbolLegal();
             isSameLine = 0;
             lineNum++;
         } while((code.eof() == 0) && (errorMsg == ErrorMessage::noError));

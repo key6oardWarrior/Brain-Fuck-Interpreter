@@ -5,7 +5,7 @@ std::vector<char>::iterator Environment::getMP(void) const {
 }
 
 std::vector<char>::const_iterator Environment::endMemPtr(void) const {
-	return memoryPointer.end()--;
+	return memoryPointer.end();
 }
 
 std::vector<char>::const_iterator Environment::beginMemPtr(void) const {
