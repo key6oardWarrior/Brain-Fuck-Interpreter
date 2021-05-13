@@ -26,6 +26,7 @@ public:
     * @param file path
     */
     Interpreter(const std::string& filePath) { code.open(filePath); }
+
     ~Interpreter(void) {
         delete env;
         env = nullptr;
