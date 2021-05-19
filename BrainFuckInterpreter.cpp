@@ -1,11 +1,11 @@
 #include "pch.h"
 #include <stack>
 
-void Interpreter::printErrorMessageDescription(const char& userChar, const int& charIndex) const {
-    std::cout << std::endl << "Error:" << std::endl;
-    std::cout << "char: " << userChar << std::endl;
-    std::cout << "line number: " << lineNum << std::endl;
-    std::cout << "char index: " << charIndex << std::endl;
+inline void errorDescription(const char& userChar, const int& charIndex) const {
+        std::cout << std::endl << "Error:" << std::endl;
+        std::cout << "char: " << userChar << std::endl;
+        std::cout << "line number: " << lineNum << std::endl;
+        std::cout << "char index: " << charIndex << std::endl;
 }
 
 bool Interpreter::isBalanced(int i) const {
@@ -57,7 +57,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
                 if(env->getMP() != end) {
                     env->incMP();
                 } else {
-                    printErrorMessageDescription(codeLine[i], i);
+                    errorDescription(codeLine[i], i);
                     return ErrorMessage::stackOverFlow;
                 }
                 break;
@@ -66,14 +66,14 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
                 if(env->getMP() != begining) {
                     env->decMP();
                 } else {
-                    printErrorMessageDescription(codeLine[i], i);
+                    errorDescription(codeLine[i], i);
                     return ErrorMessage::stackOverFlow;
                 }
                 break;
 
             case '+': // increment
                 if(isMaxPositive) {
-                    printErrorMessageDescription(codeLine[i], i);
+                    errorDescription(codeLine[i], i);
                     return ErrorMessage::integerOverFlow;
                 }
                 isMaxNegative = 0;
@@ -86,7 +86,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 
             case '-': // decrement
                 if(isMaxNegative) {
-                    printErrorMessageDescription(codeLine[i], i);
+                    errorDescription(codeLine[i], i);
                     return ErrorMessage::integerOverFlow;
                 }
                 isMaxPositive = 0;
@@ -120,7 +120,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
             case '[': // start loop
                 if(isSameLine == 0) {
                     if(isBalanced(i) == 0) {
-                        printErrorMessageDescription(codeLine[i], i);
+                        errorDescription(codeLine[i], i);
                         return ErrorMessage::unmatchedBrackets;
                     }
                     isSameLine = 1;
@@ -136,7 +136,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 
             case ']': // end loop
                 if(isSameLine == 0) {
-                    printErrorMessageDescription(codeLine[i], i);
+                    errorDescription(codeLine[i], i);
                     return ErrorMessage::unmatchedBrackets;
                 }
 
@@ -148,7 +148,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
                 break;
 
             default:
-                printErrorMessageDescription(codeLine[i], i);
+                errorDescription(codeLine[i], i);
                 return ErrorMessage::invalidSymbol;
         }
     }
@@ -192,6 +192,6 @@ void Interpreter::main(void) {
             std::cout << "code exited with error code 4: Stack overflow occurred." << std::endl;
             break;
         default:
-            std::cout << "code exited with error code 5: Integer overflow occurred.";
+            std::cout << "code exited with error code 5: Integer overflow occurred." << std::endl;
     }
 }
