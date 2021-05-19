@@ -8,7 +8,7 @@
 <h2>Background</h2>
 <p>BF is an esoteric programming language created in 1993 by Urban Müller. The language only has eigth commands, but it is fully Turing complete. BF has no practical uses, but it does challenge programmers, while testing the bounds of computer science.</p>
 
-<h2>How to code in BF</h2>
+<h2>How to Code in BF</h2>
 <ol>
   <li>'>' Forward pointer. Tell C++ to point to the memory block that is infront of the current memory block</li>
   <li>'<' Backward pointer. Tell C++ to point to the memory block that is behind the current memory block</li>
@@ -32,9 +32,9 @@
   <li>The BF code must be stored in a text file</li>
 </ol>
 
-<p>Example of good BF code</p>
+<h2>Example of Good BF Code</h2>
 
-![image](https://user-images.githubusercontent.com/42715109/116291596-c47b9880-a762-11eb-8c5b-9631dcfd807c.png)
+![image](https://user-images.githubusercontent.com/42715109/118883792-a7e70200-b8c3-11eb-89d8-3c10fd140bf3.png)
 
 <h2>Enviorment</h2>
 <ol>
