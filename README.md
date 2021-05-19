@@ -2,7 +2,7 @@
   <html>
     <body>
 
-<h1>Brain-Fuck-Interpreter</h1>
+<h1>Brainfuck Interpreter</h1>
 <p>Interpret Brainfuck (BF) code and handle errors.</p>
 
 <h2>Background</h2>
