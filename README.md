@@ -20,7 +20,7 @@
   <li>']' End a loop. Tell C++ where the end of a loop is located</li>
 </ol>
 
-<h2>Rules:</h2>
+<h2>Rules</h2>
 <ol>
   <li>This interpreter does not read white spaces</li>
   <li>Loops must start and end on the same line</li>
