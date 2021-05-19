@@ -3,7 +3,7 @@
     <body>
 
 <h1>Brain-Fuck-Interpreter</h1>
-<p>Interpret Brain Fuck (BF) code and handle errors.</p>
+<p>Interpret Brainfuck (BF) code and handle errors.</p>
 
 <h2>Background</h2>
 <p>BF is an esoteric programming language created in 1993 by Urban Müller. The language only has eigth commands, but it is fully Turing complete. BF has no practical uses, but it does challenge programmers, while testing the bounds of computer science.</p>
