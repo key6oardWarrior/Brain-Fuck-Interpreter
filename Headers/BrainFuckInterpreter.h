@@ -5,6 +5,11 @@
 #define maxInt 0x7f
 #define minInt -0x80
 
+#include <fstream>
+
+#include "StaticHeaders\Errors.h"
+#include "StaticHeaders\Environment.h"
+
 class Interpreter {
 private:
     std::fstream code;
