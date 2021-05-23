@@ -32,7 +32,6 @@ public:
         env = nullptr;
 
         code.close();
-        codeLine = "";
     }
 
 private:
