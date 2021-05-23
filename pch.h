@@ -12,10 +12,7 @@
 #include <string>
 #include <vector>
 #include <list>
-#include <fstream>
 
-#include "StaticHeaders\Errors.h"
-#include "StaticHeaders\Environment.h"
 #include "Headers\BrainFuckInterpreter.h"
 
 #endif // PCH_H
