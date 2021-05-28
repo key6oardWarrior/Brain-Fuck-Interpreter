@@ -5,8 +5,6 @@
 // Do not add files here that you will be updating frequently as this negates the performance advantage.
 
 #pragma once
-#ifndef PCH_H
-#define PCH_H
 
 #include <iostream>
 #include <string>
@@ -14,5 +12,3 @@
 #include <list>
 
 #include "Headers\BrainFuckInterpreter.h"
-
-#endif // PCH_H
