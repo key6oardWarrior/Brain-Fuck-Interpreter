@@ -1,6 +1,4 @@
 #pragma once
-#ifndef BrainFuckInterpreter_H
-#define BrainFuckInterpreter_H
 
 #define maxInt 0x7f
 #define minInt -0x80
@@ -88,5 +86,3 @@ public:
     */
     void main(void);
 };
-
-#endif // !BrainFuckInterpreter_H
