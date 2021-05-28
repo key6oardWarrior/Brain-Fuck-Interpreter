@@ -159,12 +159,12 @@ ErrorMessage Interpreter::interpret() {
     ErrorMessage errorMsg = ErrorMessage::noError;
 
     if(code.is_open()) {
-        do {
+        while((code.eof() == 0) && (errorMsg == ErrorMessage::noError)) {
             std::getline(code, codeLine);
             errorMsg = isSymbolLegal();
             isSameLine = 0;
             lineNum++;
-        } while((code.eof() == 0) && (errorMsg == ErrorMessage::noError));
+        }
     } else {
         return ErrorMessage::codeNotOpen;
     }
