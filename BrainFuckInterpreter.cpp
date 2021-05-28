@@ -1,14 +1,14 @@
 #include "pch.h"
 #include <stack>
 
-inline void errorDescription(const char& userChar, const int& charIndex) const {
-        std::cout << std::endl << "Error:" << std::endl;
-        std::cout << "char: " << userChar << std::endl;
-        std::cout << "line number: " << lineNum << std::endl;
-        std::cout << "char index: " << charIndex << std::endl;
+inline void Interpreter::errorDescription(const char& userChar, const int& charIndex) const {
+    std::cout << std::endl << "Error:" << std::endl;
+    std::cout << "char: " << userChar << std::endl;
+    std::cout << "line number: " << lineNum << std::endl;
+    std::cout << "char index: " << charIndex << std::endl;
 }
 
-bool Interpreter::isBalanced(int i) const {
+bool Interpreter::isBalanced(size_t i) const {
     int balance = 1;
 
     do {
@@ -27,7 +27,7 @@ bool Interpreter::isBalanced(int i) const {
     return balance == 0;
 }
 
-void Interpreter::goToEnd(int& charIndex) const {
+void Interpreter::goToEnd(size_t& charIndex) const {
     int cnt = 1;
 
     while(cnt > 0) {
@@ -41,9 +41,9 @@ void Interpreter::goToEnd(int& charIndex) const {
 }
 
 ErrorMessage Interpreter::isSymbolLegal(void) {
-    std::stack<int> loopIndexes;
+    std::stack<size_t> loopIndexes;
 
-    for(int i = 0; i < codeLine.length(); i++) {
+    for(size_t i = 0; i < codeLine.length(); i++) {
         switch(codeLine[i]) {
             // ignore whitespace
             case '\n':
@@ -104,7 +104,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
                     if(isprint(mp)) {
                         std::cout << mp;
                     } else {
-                        std::string prefix = (mp < 0) ? "-0x" : "0x";
+                        const std::string prefix = (mp < 0) ? "-0x" : "0x";
                         std::cout << prefix << std::hex << abs(mp) << std::endl;
                     }
                 }
