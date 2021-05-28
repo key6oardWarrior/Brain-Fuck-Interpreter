@@ -1,6 +1,4 @@
 #pragma once
-#ifndef ENVIRONMENT_H
-#define ENVIRONMENT_H
 
 class Environment {
 private:
@@ -53,5 +51,3 @@ public:
     */
     void decrement(void) { --*mp; }
 };
-
-#endif // !ENVIRONMENT_H
