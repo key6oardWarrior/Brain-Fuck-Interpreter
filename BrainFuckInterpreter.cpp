@@ -1,11 +1,11 @@
 #include "pch.h"
 #include <stack>
 
-inline void Interpreter::errorDescription(const char& userChar, const int& charIndex) const {
+inline void Interpreter::errorDescription(const char& userChar, const size_t& charIndex) const {
     std::cout << std::endl << "Error:" << std::endl;
     std::cout << "char: " << userChar << std::endl;
     std::cout << "line number: " << lineNum << std::endl;
-    std::cout << "char index: " << charIndex << std::endl;
+    std::cout << "char index: " << charIndex + 1 << std::endl;
 }
 
 bool Interpreter::isBalanced(size_t i) const {

@@ -60,7 +60,7 @@ private:
     * @param which char on the line caused the error
     * @param the line that caused the error
     */
-    void errorDescription(const char&, const int&) const;
+    void errorDescription(const char&, const size_t&) const;
 
     /*
     * determin if the symbol in the bf file is legal
