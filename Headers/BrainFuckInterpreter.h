@@ -44,14 +44,14 @@ private:
     * @param current line that is being read
     * @return true if found the closing bracket
     */
-    bool isBalanced(int) const;
+    bool isBalanced(size_t) const;
 
     /*
     * Go to the end of loop
     *
     * @param starting char index
     */
-    void goToEnd(int&) const;
+    void goToEnd(size_t&) const;
 
     /*
     * print the error message's char, char's index, and what line it is on
