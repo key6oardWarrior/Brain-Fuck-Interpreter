@@ -29,7 +29,7 @@
   <li>Each memory block cannot be more than 0x7f (127)</li>
   <li>Each memory block cannot be less than -0x80 (-128)</li>
   <li>User input is taken one char at a time, not one line at a time</li>
-  <li>The BF code must be stored in a text file</li>
+  <li>The BF code must be stored in a .bf file</li>
 </ol>
 
 <h2>Example of Good BF Code</h2>
