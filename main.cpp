@@ -8,7 +8,7 @@ int main(void) {
 
     if(fileName.substr(fileName.length()-3) != ".bf") {
         std::cout << "Error:" << std::endl;
-        std::cout << "code exited with error code 6: File must be a brain fuck (.bf) file." << std::endl;
+        std::cout << "code exited with error code 6: File must be a Brainfuck (.bf) file." << std::endl;
         return 0;
     }
 
