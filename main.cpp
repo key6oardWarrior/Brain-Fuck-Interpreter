@@ -12,11 +12,11 @@ int main(void) {
         return 0;
     }
 
-    Interpreter* bF = new Interpreter(fileName);
-    bF->main();
+    Interpreter* bf = new Interpreter(fileName);
+    bf->main();
 
-    delete bF;
-    bF = nullptr;
+    delete bf;
+    bf = nullptr;
 
     system("pause");
     return 0;
