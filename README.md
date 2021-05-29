@@ -17,7 +17,7 @@
   <li>'+' Increment. Tell C++ to increment the memory block by 1</li>
   <li>'-' Decrement. Tell C++ to decrement the memory block by 1</li>
   <li>'[' Start a loop. Tell C++ where the start a loop is located. When a loop starts over it will go to wherever the '[' char is located</li>
-  <li>']' End a loop. Tell C++ where the end of a loop is located. A Loop will only end if the value of the current memory block is 0 and the current char being read is ]</li>
+  <li>']' End a loop. Tell C++ where the end of a loop is located. A Loop will only end if the value of the current memory block is 0 and the current char being read is ']'</li>
 </ol>
 
 <h2>Rules</h2>
