@@ -1,8 +1,5 @@
 #pragma once
 
-#define maxInt 0x7f
-#define minInt -0x80
-
 #include <fstream>
 
 #include "StaticHeaders\Errors.h"
@@ -17,6 +14,8 @@ private:
     const std::vector<char>::const_iterator begining = env->beginMemPtr();
     const std::vector<char>::const_iterator end = env->endMemPtr();
 
+    const int maxInt = 0x7f;
+    const int minInt = -0x80;
     int lineNum = 1;
     bool isSameLine = 0;
     bool isMaxPositive = 0;
