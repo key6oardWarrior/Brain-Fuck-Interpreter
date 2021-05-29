@@ -34,7 +34,7 @@
 
 <h2>Example of Good BF Code</h2>
 
-![image](https://user-images.githubusercontent.com/42715109/118883792-a7e70200-b8c3-11eb-89d8-3c10fd140bf3.png)
+![image](https://user-images.githubusercontent.com/42715109/120082546-9ce55c00-c091-11eb-8b9c-67ad29e9fe26.png)
 
 <h2>Enviorment</h2>
 <ol>
