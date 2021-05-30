@@ -9,6 +9,7 @@ inline void Interpreter::errorDescription(const char& userChar, const size_t& ch
 }
 
 bool Interpreter::isBalanced(size_t i) const {
+    const size_t lineLength = codeLine.length();
     int balance = 1;
 
     do {
@@ -22,7 +23,7 @@ bool Interpreter::isBalanced(size_t i) const {
                 return 0;
             }
         }
-    } while(i < codeLine.length());
+    } while(i < lineLength);
 
     return balance == 0;
 }
