@@ -1,13 +1,13 @@
 #include "pch.h"
 
-std::vector<char>::iterator Environment::getMP(void) const {
-	return mp;
+std::vector<char>::iterator Environment::getMemPtr(void) const {
+				return memoryPointer;
 }
 
-std::vector<char>::const_iterator Environment::endMemPtr(void) const {
-	return memoryPointer.end();
+std::vector<char>::const_iterator Environment::getEnd(void) const {
+				return memory.end();
 }
 
-std::vector<char>::const_iterator Environment::beginMemPtr(void) const {
-	return memoryPointer.begin();
+std::vector<char>::const_iterator Environment::getBegining(void) const {
+				return memory.begin();
 }

@@ -2,52 +2,52 @@
 
 class Environment {
 private:
-    std::vector<char> memoryPointer;
-    std::vector<char>::iterator mp;
+    std::vector<char> memory;
+    std::vector<char>::iterator memoryPointer;
 
 public:
-    Environment(void) : memoryPointer(0x752f) {
-        mp = memoryPointer.begin();
+    Environment(void) : memory(0x752f) {
+        memoryPointer = memory.begin();
     }
 
 public:
     /*
-    * @return mp
+    * @return memoryPointer
     */
-    std::vector<char>::iterator getMP(void) const;
+    std::vector<char>::iterator getMemPtr(void) const;
 
     /*
-    * @return the end of memoryPointer
+    * @return the end of memory
     */
-    std::vector<char>::const_iterator endMemPtr(void) const;
+    std::vector<char>::const_iterator getEnd(void) const;
 
     /*
-    * @return the begining of memoryPointer
+    * @return the begining of memory
     */
-    std::vector<char>::const_iterator beginMemPtr(void) const;
+    std::vector<char>::const_iterator getBegining(void) const;
 
     /*
-    * increment the mp pointer
+    * increment the memoryPointer pointer
     */
-    void incMP(void) { mp++; }
+    void incMemPtr(void) { memoryPointer++; }
 
     /*
-    * decrement the mp pointer
+    * decrement the memoryPointer pointer
     */
-    void decMP(void) { mp--; }
+    void decMemPtr(void) { memoryPointer--; }
 
     /*
-    * @param userLetter - set user input to *mp
+    * @param userLetter - set user input to *memoryPointer
     */
-    void userInput(const char& userLetter) { *mp = userLetter; }
+    void userInput(const char& userLetter) { *memoryPointer = userLetter; }
 
     /*
-    * add 0x1 to *mp
+    * add 0x1 to *memoryPointer
     */
-    void increment(void) { ++*mp; }
+    void increment(void) { ++*memoryPointer; }
 
     /*
-    * subtract 0x1 from *mp
+    * subtract 0x1 from *memoryPointer
     */
-    void decrement(void) { --*mp; }
+    void decrement(void) { --*memoryPointer; }
 };

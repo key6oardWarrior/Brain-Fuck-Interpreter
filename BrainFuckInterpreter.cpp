@@ -55,8 +55,8 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
                 continue;
 
             case '>': // forward pointer
-                if(env->getMP() != end) {
-                    env->incMP();
+                if(env->getMemPtr() != end) {
+                    env->incMemPtr();
                 } else {
                     errorDescription(codeLine[i], i);
                     return ErrorMessage::stackOverFlow;
@@ -64,8 +64,8 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
                 break;
 
             case '<': // backward pointer
-                if(env->getMP() != begining) {
-                    env->decMP();
+                if(env->getMemPtr() != begining) {
+                    env->decMemPtr();
                 } else {
                     errorDescription(codeLine[i], i);
                     return ErrorMessage::stackOverFlow;
@@ -80,7 +80,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
                 isMaxNegative = 0;
                 env->increment();
 
-                if(*env->getMP() == maxInt) {
+                if(*env->getMemPtr() == maxInt) {
                     isMaxPositive = 1;
                 }
                 break;
@@ -93,14 +93,14 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
                 isMaxPositive = 0;
                 env->decrement();
 
-                if(*env->getMP() == minInt) {
+                if(*env->getMemPtr() == minInt) {
                     isMaxNegative = 1;
                 }
                 break;
 
             case '.': // print
                 {
-                    const char mp = *env->getMP();
+                    const char mp = *env->getMemPtr();
 
                     if(isprint(mp)) {
                         std::cout << mp;
@@ -127,7 +127,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
                     isSameLine = 1;
                 }
 
-                if(*env->getMP() == 0x0) {
+                if(*env->getMemPtr() == 0x0) {
                     goToEnd(i);
                     break;
                 }
@@ -141,7 +141,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
                     return ErrorMessage::unmatchedBrackets;
                 }
 
-                if(*env->getMP() != 0x0) {
+                if(*env->getMemPtr() != 0x0) {
                     i = loopIndexes.top();
                 } else if(loopIndexes.size() > 0) {
                     loopIndexes.pop();
