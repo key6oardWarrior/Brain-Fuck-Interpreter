@@ -2,9 +2,6 @@
 
 #include <fstream>
 
-#include "StaticHeaders\Errors.h"
-#include "StaticHeaders\Environment.h"
-
 class Interpreter {
 private:
     std::fstream code;
