@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "Headers\BrainfuckInterpreter.h"
 
 int main(void) {
     std::string fileName = "";
