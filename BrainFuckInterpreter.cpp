@@ -1,4 +1,6 @@
 #include "pch.h"
+#include "Headers\BrainfuckInterpreter.h"
+
 #include <stack>
 
 inline void Interpreter::errorDescription(const char& userChar, const size_t& charIndex) const {
