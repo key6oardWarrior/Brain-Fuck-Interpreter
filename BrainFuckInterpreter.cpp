@@ -110,15 +110,23 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
                         const std::string prefix = (mp < 0) ? "-0x" : "0x";
                         std::cout << prefix << std::hex << abs(mp) << std::endl;
                     }
+                    break;
                 }
-                break;
 
             case ',': // user input
-                char userLetter;
-                
-                std::cin >> userLetter;
-                env->userInput(userLetter);
-                break;
+			    {
+				    std::string userLetters;
+					std::getline(std::cin, userLetters);
+
+					if(userLetters.length() > 1) {
+					    for(char i : userLetters) {
+						    env->userInputString(i);
+						}
+					} else {
+					    env->userInputChar(userLetters[0]);
+					}
+					break;
+				}
 
             case '[': // start loop
                 if(isSameLine == 0) {
