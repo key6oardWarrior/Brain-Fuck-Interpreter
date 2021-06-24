@@ -42,15 +42,15 @@ public:
     void userInput(const char& userLetter) { *memoryPointer = userLetter; }
     
     /*
-	* If the user enters a std::string rather than a char then add each
-	* char to a memory block then move the next memory block
-	* 
-	* @param userLetter - set *memoryPointer to user input
-	*/
-	void userInputString(const char& userLetter) {
-	    *memoryPointer = userLetter;
-		++*memoryPointer;
-	}
+    * If the user enters a std::string rather than a char then add each
+    * char to a memory block then move the next memory block
+    *
+    * @param userLetter - set *memoryPointer to user input
+    */
+    void userInputString(const char& userLetter) {
+        *memoryPointer = userLetter;
+        ++*memoryPointer;
+    }
 
     /*
     * add 0x1 to *memoryPointer
