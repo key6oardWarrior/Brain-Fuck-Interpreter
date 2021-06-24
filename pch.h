@@ -13,4 +13,3 @@
 
 #include "StaticHeaders\Errors.h"
 #include "StaticHeaders\Environment.h"
-#include "Headers\BrainFuckInterpreter.h"
