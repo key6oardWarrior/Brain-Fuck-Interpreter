@@ -63,8 +63,6 @@ private:
     * if it is then carry out instructions
     * else return int that correlates to enum class ErrorMessage
     *
-    * @param memory for the bf program
-    * @param keep track of the bf code's line number
     * @return the error code to be displayed
     */
     ErrorMessage isSymbolLegal(void);
