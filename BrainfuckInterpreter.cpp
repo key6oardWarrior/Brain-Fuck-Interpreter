@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Headers\BrainfuckInterpreter.h"
+#include "Headers\BrainfuckInterpreter.hpp"
 
 #include <stack>
 
