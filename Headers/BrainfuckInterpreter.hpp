@@ -11,8 +11,8 @@ private:
     const std::vector<char>::const_iterator begining = env->getBegining();
     const std::vector<char>::const_iterator end = env->getEnd();
 
-    const int maxInt = 0x7f;
-    const int minInt = -0x80;
+    const size_t maxInt = 0x7f;
+    const unsigned int minInt = -0x80;
     int lineNum = 1;
     bool isSameLine = 0;
     bool isMaxPositive = 0;
