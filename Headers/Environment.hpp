@@ -20,7 +20,6 @@ public:
 	/*
 	* Get const ref of memory[idx]
 	* 
-	* @param the index in memory to be returned
 	* @return a const ref to the memory[idx]
 	*/
 	unsigned short const& getConstMemory(void);
@@ -28,7 +27,6 @@ public:
 	/*
 	* Get ref of memory[idx]
 	*
-	* @param the index in memory to be returned
 	* @return a ref to the memory[idx]
 	*/
 	unsigned short& getRefMemory(void);
@@ -36,7 +34,6 @@ public:
 	/*
 	* Get copy of memory[idx]
 	*
-	* @param the index in memory to be returned
 	* @return a copy to the memory[idx]
 	*/
 	unsigned short getCopyMemory(void);
