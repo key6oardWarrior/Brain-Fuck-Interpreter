@@ -8,8 +8,6 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
-#include <list>
+#include <stack>
 
-#include "StaticHeaders\Errors.h"
-#include "StaticHeaders\Environment.h"
+#include "StaticHeaders\Errors.hpp"
