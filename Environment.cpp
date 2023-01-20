@@ -1,13 +1,18 @@
 #include "pch.h"
+#include "..\BrainFuckInterpreter\Headers\Environment.hpp"
 
-std::vector<char>::iterator Environment::getMemPtr(void) const {
-				return memoryPointer;
+unsigned short Environment::getMemIdx(void) const {
+	return memoryIndex;
 }
 
-std::vector<char>::const_iterator Environment::getEnd(void) const {
-				return memory.end();
+unsigned short Environment::getCopyMemory(void) {
+	return memory[memoryIndex];
 }
 
-std::vector<char>::const_iterator Environment::getBegining(void) const {
-				return memory.begin();
+unsigned short& Environment::getRefMemory(void) {
+	return memory[memoryIndex];
+}
+
+unsigned short const& Environment::getConstMemory(void) {
+	return memory[memoryIndex];
 }
