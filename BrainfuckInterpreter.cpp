@@ -109,8 +109,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 					if(isprint(mp)) {
 						std::cout << mp;
 					} else {
-						const std::string prefix = "0x";
-						std::cout << prefix << std::hex << abs(mp) << std::endl;
+						std::cout << "0x" << std::hex << abs(mp) << std::endl;
 					}
 					break;
 				}
