@@ -1,6 +1,4 @@
 #pragma once
-
-#include <fstream>
 #include "Environment.hpp"
 
 class Interpreter {
