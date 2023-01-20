@@ -25,20 +25,6 @@ public:
 	unsigned short const& getConstMemory(void);
 
 	/*
-	* Get ref of memory[idx]
-	*
-	* @return a ref to the memory[idx]
-	*/
-	unsigned short& getRefMemory(void);
-
-	/*
-	* Get copy of memory[idx]
-	*
-	* @return a copy to the memory[idx]
-	*/
-	unsigned short getCopyMemory(void);
-
-	/*
 	* increment the memoryPointer pointer
 	*/
 	void incMemPtr(void) { memoryIndex++; }
