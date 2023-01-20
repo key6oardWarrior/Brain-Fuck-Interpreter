@@ -71,10 +71,10 @@ public:
 	/*
 	* add 0x1 to *memoryPointer
 	*/
-	void increment(void) { memoryIndex++; }
+	void increment(void) { memory[memoryIndex]++; }
 
 	/*
 	* subtract 0x1 from *memoryPointer
 	*/
-	void decrement(void) { memoryIndex--; }
+	void decrement(void) { memory[memoryIndex]--; }
 };
