@@ -8,7 +8,9 @@ private:
 public:
 	const unsigned short end = 0x752f;
 
-	constexpr Environment(void) : memory() {}
+	Environment(void) {
+		std::fill_n(memory, end, 0);
+	}
 
 	/*
 	* @return memoryPointer
