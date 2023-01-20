@@ -8,15 +8,17 @@ int main(const int argc, const char** argv) {
 		return 0;
 	}
 
-	const std::string fileName = argv[1];
+	{
+		const std::string fileName = argv[1];
 
-	if(fileName.substr(fileName.length() - 3) != ".bf") {
-		std::cout << "Error:" << std::endl;
-		std::cout << "code exited with error code 6: File must be a brain fuck (.bf) file." << std::endl;
-		return 0;
+		if(fileName.substr(fileName.length() - 3) != ".bf") {
+			std::cout << "Error:" << std::endl;
+			std::cout << "code exited with error code 6: File must be a brain fuck (.bf) file." << std::endl;
+			return 0;
+		}
 	}
 
-	Interpreter* bf = new Interpreter(fileName);
+	Interpreter* bf = new Interpreter(argv[1]);
 	bf->main();
 
 	delete bf;
