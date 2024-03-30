@@ -38,10 +38,10 @@
 
 <h2>Enviorment</h2>
 <ol>
-  <li>Built in Visual Studio 2019</li>
-  <li>C++ Language standard: ISO C++17 Standard (/std:c++17)</li>
+  <li>Built in Visual Studio 2022</li>
+  <li>C++ Language standard: ISO C++20 Standard (/std:c++20)</li>
   <li>C Language standard: ISO C17 (2018) Standard (/std:c17)</li>
-  <li>Complied on the x86 platform</li> 
+  <li>Complied on the x64 platform</li> 
 </ol>
 
   </body>
