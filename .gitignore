@@ -215,3 +215,8 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+*.vsidx
+Browse.*
+DocumentLayout.json
+Solution.*
