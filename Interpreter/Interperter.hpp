@@ -38,7 +38,7 @@ protected:
 		std::cout << std::endl << "Error:" << std::endl;
 		std::cout << "char: " << userChar << std::endl;
 		std::cout << "line number: " << lineNum << std::endl;
-		std::cout << "char index: " << charIndex + 1 << std::endl;
+		std::cout << "char index: " << charIndex << std::endl;
 	}
 
 	/// <summary>
