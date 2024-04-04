@@ -8,7 +8,6 @@ private:
 	const size_t maxInt = 127;
 	const int minInt = -128;
 	unsigned long long lineNum = 1;
-	bool isSameLine = 0;
 
 	/// <summary>
 	/// Print the error message's char, char's index, and what line it is on
@@ -26,6 +25,7 @@ private:
 protected:
 	Memory* mem = new Memory();
 	std::string codeLine;
+	bool isSameLine = 0;
 
 	/// <summary>
 	/// Ensure all open brackets have an close bracket

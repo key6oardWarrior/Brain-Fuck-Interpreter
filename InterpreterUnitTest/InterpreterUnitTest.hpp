@@ -8,6 +8,7 @@ private:
 	void resetMemory(void) {
 		delete __super::mem;
 		__super::mem = new Memory();
+		__super::isSameLine = 0;
 	}
 
 public:

@@ -135,7 +135,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 		}
 
 		case '[': // start loop
-			if((isSameLine == 0) || (lineNum == 1)) {
+			if(isSameLine == 0) {
 				if(isBalanced(ii) == 0) {
 					errorDescription(codeLine[ii], ii);
 					return ErrorMessage::unmatchedBrackets;
