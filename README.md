@@ -44,5 +44,8 @@
   <li>Complied on the x64 platform</li> 
 </ol>
 
+<h2>Note:</h2>
+<p>When running the unit test ensure that Visual Studio Code 2022's configuration manager is set to Debug, or else not all the assert functions will not be called.</p>
+
   </body>
 </html>
