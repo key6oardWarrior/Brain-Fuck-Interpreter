@@ -1,12 +1,18 @@
 #include "pch.h"
 #include "Interperter.hpp"
 
+void Interpreter::errorDescription(const char userChar, const size_t charIndex) const {
+	std::cout << std::endl << "Error:" << std::endl;
+	std::cout << "char: " << userChar << std::endl;
+	std::cout << "line number: " << lineNum << std::endl;
+	std::cout << "char index: " << charIndex << std::endl;
+}
+
 bool Interpreter::isBalanced(size_t ii) const {
 	const size_t lineLength = codeLine.length();
-	long balance = 1;
+	unsigned long long balance = 1;
 
-	do {
-		++ii;
+	while(++ii < lineLength) {
 		if(codeLine[ii] == '[') {
 			++balance;
 		} else if(codeLine[ii] == ']') {
@@ -15,7 +21,7 @@ bool Interpreter::isBalanced(size_t ii) const {
 			if(balance < 0)
 				return 0;
 		}
-	} while(ii < lineLength);
+	}
 
 	return balance == 0;
 }

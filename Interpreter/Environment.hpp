@@ -49,7 +49,7 @@ public:
 	/// </summary>
 	/// <param name="userLetter">- set *memoryPointer to user input</param>
 	void userInputString(const char userLetter) {
-		memory[++memoryIndex] = userLetter;
+		memory[memoryIndex++] = userLetter;
 	}
 
 	/// <summary>
