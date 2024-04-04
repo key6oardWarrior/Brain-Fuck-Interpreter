@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Environment.hpp">
+    <ClInclude Include="MemoryManagement.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Errors.hpp">

@@ -1,16 +1,25 @@
 #pragma once
 #include "pch.h"
 
-class Environment {
+struct Block {
+	short value = 0;
+	bool isMaxPositive = 0;
+	bool isMaxNegative = 0;
+
+	Block(void) = default;
+	~Block() = default;
+};
+
+class Memory {
 private:
-	unsigned short memory[0x752f];
+	Block memory[30'000];
 	unsigned short memoryIndex = 0;
 
 public:
-	const unsigned short end = 0x752f;
+	const unsigned short end = 29'999;
 
-	Environment(void) { std::fill_n(memory, end, 0); }
-	~Environment() = default;
+	Memory(void) = default;
+	~Memory() = default;
 
 	/// <summary>
 	/// </summary>
@@ -22,25 +31,26 @@ public:
 	/// <summary>
 	/// </summary>
 	/// <returns>The memory stored at memoryIndex</returns>
-	unsigned short getMemoryAtCurrentIdx(void) const {
-		return memory[memoryIndex];
+	Block* getMemoryAtCurrentIdx(void) {
+		return &memory[memoryIndex];
 	}
 
 	/// <summary>
-	/// Increment the memoryPointer pointer
+	/// Increment the memoryIndex
 	/// </summary>
-	void incMemPtr(void) { ++memoryIndex; }
+	void incMemIdx(void) { ++memoryIndex; }
 
 	/// <summary>
-	/// ecrement the memoryPointer pointer
+	/// decrement the memoryIndex
 	/// </summary>
-	void decMemPtr(void) { --memoryIndex; }
+	void decMemIdx(void) { --memoryIndex; }
 
 	/// <summary>
 	/// </summary>
 	/// <param name="userLetter">- set *memoryPointer to user input</param>
 	void userInputChar(const char userLetter) {
-		memory[memoryIndex] = userLetter;
+		memory[memoryIndex].value = userLetter;
+		memory[memoryIndex].isMaxPositive = (userLetter >= 127);
 	}
 
 	/// <summary>
@@ -49,17 +59,18 @@ public:
 	/// </summary>
 	/// <param name="userLetter">- set *memoryPointer to user input</param>
 	void userInputString(const char userLetter) {
-		memory[memoryIndex++] = userLetter;
+		memory[memoryIndex].value = userLetter;
+		memory[memoryIndex++].isMaxPositive = (userLetter >= 127);
 	}
 
 	/// <summary>
 	/// Add 0x1 to *memoryPointer
 	/// </summary>
 	/// <param name=""></param>
-	void increment(void) { ++memory[memoryIndex]; }
+	void increment(void) { ++memory[memoryIndex].value; }
 
 	/// <summary>
 	/// Subtract 0x1 from *memoryPointer
 	/// </summary>
-	void decrement(void) { --memory[memoryIndex]; }
+	void decrement(void) { --memory[memoryIndex].value; }
 };

@@ -9,5 +9,5 @@ enum class ErrorMessage {
     invalidSymbol = 2,
     unmatchedBrackets = 3,
     stackOverFlow = 4,
-    integerOverFlow = 5,
+    integerOverFlow = 5
 };

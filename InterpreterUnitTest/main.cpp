@@ -25,5 +25,9 @@ int main(int argc, char* argv[]) {
 
 	ut.isBalanced();
 	ut.goToEnd();
+	ut.isSymbolLegal();
+
+	std::cout << "Test passed";
+
 	return EXIT_SUCCESS;
 }

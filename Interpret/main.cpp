@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
 	}
 
 	Interpreter interpreter(fileName);
-	interpreter.main();
+	interpreter.startInterpreting();
 
 	system("pause");
 	return EXIT_SUCCESS;

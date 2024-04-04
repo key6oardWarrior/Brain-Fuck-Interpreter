@@ -135,7 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Environment.hpp" />
+    <ClInclude Include="MemoryManagement.hpp" />
     <ClInclude Include="Errors.hpp" />
     <ClInclude Include="Interperter.hpp" />
     <ClInclude Include="pch.h" />

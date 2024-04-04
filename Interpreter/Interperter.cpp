@@ -53,8 +53,8 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 			continue;
 
 		case '>': // forward pointer
-			if(env->getMemIdx() != env->end) {
-				env->incMemPtr();
+			if(mem->getMemIdx() < mem->end) {
+				mem->incMemIdx();
 			} else {
 				errorDescription(codeLine[ii], ii);
 				return ErrorMessage::stackOverFlow;
@@ -62,8 +62,8 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 			break;
 
 		case '<': // backward pointer
-			if(env->getMemIdx() != 0) {
-				env->decMemPtr();
+			if(mem->getMemIdx() > 0) {
+				mem->decMemIdx();
 			} else {
 				errorDescription(codeLine[ii], ii);
 				return ErrorMessage::stackOverFlow;
@@ -71,34 +71,46 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 			break;
 
 		case '+': // increment
-			if(isMaxPositive) {
+		{
+			Block* block = mem->getMemoryAtCurrentIdx();
+
+			if(block->isMaxPositive) {
 				errorDescription(codeLine[ii], ii);
 				return ErrorMessage::integerOverFlow;
 			}
 
-			isMaxNegative = 0;
-			env->increment();
+			block->isMaxNegative = 0;
+			mem->increment();
 
-			if(env->getMemIdx() == maxInt)
-				isMaxPositive = 1;
+			if(block->value >= maxInt)
+				block->isMaxPositive = 1;
+
+			block = nullptr;
 			break;
+		}
 
 		case '-': // decrement
-			if(isMaxNegative) {
+		{
+			Block* block = mem->getMemoryAtCurrentIdx();
+
+			if(block->isMaxNegative) {
 				errorDescription(codeLine[ii], ii);
 				return ErrorMessage::integerOverFlow;
 			}
 
-			isMaxPositive = 0;
-			env->decrement();
+			block->isMaxPositive = 0;
+			mem->decrement();
 
-			if(env->getMemIdx() == minInt) 
-				isMaxNegative = 1;
+			if(block->value <= minInt)
+				block->isMaxNegative = 1;
+
+			block = nullptr;
 			break;
+		}
 
 		case '.': // print
 		{
-			const char mp = env->getMemoryAtCurrentIdx();
+			const char mp = mem->getMemoryAtCurrentIdx()->value;
 
 			if(isprint(mp))
 				std::cout << mp;
@@ -114,16 +126,16 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 
 			if(userLetters.length() > 1) {
 				for(char i : userLetters) {
-					env->userInputString(i);
+					mem->userInputString(i);
 				}
 			} else {
-				env->userInputChar(userLetters[0]);
+				mem->userInputChar(userLetters[0]);
 			}
 			break;
 		}
 
 		case '[': // start loop
-			if(isSameLine == 0) {
+			if((isSameLine == 0) || (lineNum == 1)) {
 				if(isBalanced(ii) == 0) {
 					errorDescription(codeLine[ii], ii);
 					return ErrorMessage::unmatchedBrackets;
@@ -132,7 +144,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 				isSameLine = 1;
 			}
 
-			if(env->getMemoryAtCurrentIdx() == 0x0) {
+			if(mem->getMemoryAtCurrentIdx()->value == 0x0) {
 				goToEnd(ii);
 				break;
 			}
@@ -146,7 +158,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 				return ErrorMessage::unmatchedBrackets;
 			}
 
-			if(env->getMemoryAtCurrentIdx() != 0x0) {
+			if(mem->getMemoryAtCurrentIdx()->value != 0x0) {
 				ii = loopIndexes.top();
 			} else if(loopIndexes.size() > 0) {
 				loopIndexes.pop();
@@ -158,6 +170,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 			return ErrorMessage::invalidSymbol;
 		}
 	}
+
 	return ErrorMessage::noError;
 }
 
@@ -178,7 +191,7 @@ ErrorMessage Interpreter::interpret(void) {
 	return errorMsg;
 }
 
-void Interpreter::main(void) {
+void Interpreter::startInterpreting(void) {
 	ErrorMessage message = Interpreter::interpret();
 	std::cout << std::endl;
 

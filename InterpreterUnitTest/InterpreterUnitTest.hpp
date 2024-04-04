@@ -2,8 +2,13 @@
 
 class InterpreterUnitTest : private Interpreter {
 private:
-	const std::string balancedCodeLine = "[[]][[++--,.]][[<<<[+++][]]]";
+	const std::string balancedCodeLine = "[[++]-- <<+-][[++--,.]][[<<<[+++][]]]";
 	const std::string balancedCodeLine2 = "[[[][[][][]]]]";
+
+	void resetMemory(void) {
+		delete __super::mem;
+		__super::mem = new Memory();
+	}
 
 public:
 	InterpreterUnitTest(const std::string& filePath) : Interpreter(filePath) {}
@@ -20,5 +25,10 @@ public:
 	/// Go to the end of loop
 	/// </summary>
 	/// <param name="charIndex">- Starting char index</param>
-	void goToEnd();
+	void goToEnd(void);
+
+	/// <summary>
+	/// Mock if __super::isSymbolLegal
+	/// </summary>
+	void isSymbolLegal(void);
 };

@@ -1,26 +1,14 @@
 #pragma once
 #include "Errors.hpp"
-#include "Environment.hpp"
+#include "MemoryManagement.hpp"
 
 class Interpreter {
 private:
 	std::fstream code;
-
-	Environment* env = new Environment();
-
-	const size_t maxInt = 0x7f;
-	const signed int minInt = -0x80;
+	const size_t maxInt = 127;
+	const int minInt = -128;
 	unsigned long long lineNum = 1;
 	bool isSameLine = 0;
-	bool isMaxPositive = 0;
-	bool isMaxNegative = 0;
-
-	/// <summary>
-	/// Determin if the symbol in the bf file is legal if it is then carry out
-	/// instructions else return ErrorMessage
-	/// </summary>
-	/// <returns>The error code to be displayed</returns>
-	ErrorMessage isSymbolLegal(void);
 
 	/// <summary>
 	/// Print the error message's char, char's index, and what line it is on
@@ -29,7 +17,14 @@ private:
 	/// <param name="charIndex">- Which char on the line caused the error</param>
 	inline void errorDescription(const char, const size_t) const;
 
+	/// <summary>
+	/// Interpret all code in the file
+	/// </summary>
+	/// <returns></returns>
+	ErrorMessage interpret(void);
+
 protected:
+	Memory* mem = new Memory();
 	std::string codeLine;
 
 	/// <summary>
@@ -46,10 +41,11 @@ protected:
 	void goToEnd(size_t&) const;
 
 	/// <summary>
-	/// Interpret all code in the file
+	/// Determin if the symbol in the bf file is legal if it is then carry out
+	/// instructions else return ErrorMessage
 	/// </summary>
-	/// <returns></returns>
-	ErrorMessage interpret(void);
+	/// <returns>The error code to be displayed</returns>
+	ErrorMessage isSymbolLegal(void);
 
 public:
 	/// <summary>
@@ -60,5 +56,5 @@ public:
 
 	~Interpreter() { code.close(); }
 
-	void main(void);
+	void startInterpreting(void);
 };
