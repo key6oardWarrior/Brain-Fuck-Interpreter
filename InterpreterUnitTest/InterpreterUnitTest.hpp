@@ -5,6 +5,9 @@ private:
 	const std::string balancedCodeLine = "[[++]-- <<+-][[++--,.]][[<<<[+++][]]]";
 	const std::string balancedCodeLine2 = "[[[][[][][]]]]";
 
+/// <summary>
+/// Set __super::mem to inital state
+/// </summary>
 	void resetMemory(void) {
 		delete __super::mem;
 		__super::mem = new Memory();
@@ -16,20 +19,17 @@ public:
 	~InterpreterUnitTest() = default;
 
 	/// <summary>
-	/// Ensure all open brackets have an close bracket
+	/// Mock __super::isBalanced
 	/// </summary>
-	/// <param name="ii">- Current line that is being read</param>
-	/// <returns>True if found the closing bracket</returns>
 	void isBalanced(void);
 
 	/// <summary>
-	/// Go to the end of loop
+	/// Mock __super::goToEnd
 	/// </summary>
-	/// <param name="charIndex">- Starting char index</param>
 	void goToEnd(void);
 
 	/// <summary>
-	/// Mock if __super::isSymbolLegal
+	/// Mock __super::isSymbolLegal
 	/// </summary>
 	void isSymbolLegal(void);
 };
