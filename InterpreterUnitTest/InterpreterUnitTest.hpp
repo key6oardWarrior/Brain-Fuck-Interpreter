@@ -5,6 +5,9 @@ private:
 	const std::string balancedCodeLine = "[[++]-- <<+-][[++--,.]][[<<<[+++][]]]";
 	const std::string balancedCodeLine2 = "[[[][[][][]]]]";
 
+/// <summary>
+/// Set __super::mem to inital state
+/// </summary>
 	void resetMemory(void) {
 		delete __super::mem;
 		__super::mem = new Memory();
@@ -23,7 +26,6 @@ public:
 	/// <summary>
 	/// Mock __super::goToEnd
 	/// </summary>
-	/// <param name="charIndex">- Starting char index</param>
 	void goToEnd(void);
 
 	/// <summary>
