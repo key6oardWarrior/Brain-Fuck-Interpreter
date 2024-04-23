@@ -5,9 +5,9 @@ private:
 	const std::string balancedCodeLine = "[[++]-- <<+-][[++--,.]][[<<<[+++][]]]";
 	const std::string balancedCodeLine2 = "[[[][[][][]]]]";
 
-/// <summary>
-/// Set __super::mem to inital state
-/// </summary>
+	/// <summary>
+	/// Set __super::mem to inital state
+	/// </summary>
 	void resetMemory(void) {
 		delete __super::mem;
 		__super::mem = new Memory();

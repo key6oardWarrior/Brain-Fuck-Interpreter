@@ -19,7 +19,6 @@ private:
 	/// <summary>
 	/// Interpret all code in the file
 	/// </summary>
-	/// <returns></returns>
 	ErrorMessage interpret(void);
 
 protected:
