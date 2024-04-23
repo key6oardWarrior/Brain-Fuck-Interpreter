@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
 	ut.goToEnd();
 	ut.isSymbolLegal();
 
-	std::cout << "Test passed";
+	std::cout << "\nTest passed";
 
 	return EXIT_SUCCESS;
 }

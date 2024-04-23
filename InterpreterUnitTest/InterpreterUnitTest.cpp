@@ -33,6 +33,7 @@ void InterpreterUnitTest::goToEnd(void) {
 
 void InterpreterUnitTest::isSymbolLegal(void) {
 	const std::string errMsg = "isSymbolLegal is not working correctly";
+	const std::string retErrMsg = "Did not return the right error message";
 
 	__super::codeLine = balancedCodeLine;
 	assert((void(errMsg), __super::isSymbolLegal() == ErrorMessage::noError));
@@ -45,30 +46,37 @@ void InterpreterUnitTest::isSymbolLegal(void) {
 	const std::string stackOverFlow = "<>+[]--";
 	const std::string stackOverFlow2 = "+[>+].";
 	const std::string unmatchedBrackets = ">>+[--]]+";
+	const std::string unmatchedBrackets2 = ">>+[--][+";
 	const std::string integerOverFlow = "+[--]";
 	const std::string integerOverFlow2 = "+[+]";
 	const std::string invalidSymbol = "++-[-1]++.";
 
 	__super::codeLine = stackOverFlow;
-	assert((void(errMsg), __super::isSymbolLegal() == ErrorMessage::stackOverFlow));
+	assert((void(retErrMsg), __super::isSymbolLegal() == ErrorMessage::stackOverFlow));
+	assert((void("memoryIndex is not 0"), __super::mem->getMemIdx() == 0));
 	resetMemory();
 
 	__super::codeLine = stackOverFlow2;
-	assert((void(errMsg), __super::isSymbolLegal() == ErrorMessage::stackOverFlow));
+	assert((void(retErrMsg), __super::isSymbolLegal() == ErrorMessage::stackOverFlow));
+	assert((void("memoryIndex is not mem->end"), __super::mem->getMemIdx() == __super::mem->end));
 	resetMemory();
 
 	__super::codeLine = unmatchedBrackets;
-	assert((void(errMsg), __super::isSymbolLegal() == ErrorMessage::unmatchedBrackets));
+	assert((void(retErrMsg), __super::isSymbolLegal() == ErrorMessage::unmatchedBrackets));
+	resetMemory();
+
+	__super::codeLine = unmatchedBrackets2;
+	assert((void(retErrMsg), __super::isSymbolLegal() == ErrorMessage::unmatchedBrackets));
 	resetMemory();
 
 	__super::codeLine = integerOverFlow;
-	assert((void(errMsg), __super::isSymbolLegal() == ErrorMessage::integerOverFlow));
+	assert((void(retErrMsg), __super::isSymbolLegal() == ErrorMessage::integerOverFlow));
 	resetMemory();
 
 	__super::codeLine = integerOverFlow2;
-	assert((void(errMsg), __super::isSymbolLegal() == ErrorMessage::integerOverFlow));
+	assert((void(retErrMsg), __super::isSymbolLegal() == ErrorMessage::integerOverFlow));
 	resetMemory();
 
 	__super::codeLine = invalidSymbol;
-	assert((void(errMsg), __super::isSymbolLegal() == ErrorMessage::invalidSymbol));
+	assert((void(retErrMsg), __super::isSymbolLegal() == ErrorMessage::invalidSymbol));
 }
