@@ -191,7 +191,7 @@ ErrorMessage Interpreter::interpret(void) {
 	return errorMsg;
 }
 
-void Interpreter::startInterpreting(void) {
+ErrorMessage Interpreter::startInterpreting(void) {
 	ErrorMessage message = Interpreter::interpret();
 	std::cout << std::endl;
 
@@ -214,4 +214,6 @@ void Interpreter::startInterpreting(void) {
 	case ErrorMessage::integerOverFlow:
 		std::cout << "code exited with error code 5: Integer overflow occurred." << std::endl;
 	}
+
+	return message;
 }

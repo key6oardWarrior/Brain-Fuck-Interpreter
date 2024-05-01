@@ -73,4 +73,6 @@ public:
 	/// Subtract 0x1 from *memoryPointer
 	/// </summary>
 	void decrement(void) { --memory[memoryIndex].value; }
+
+	friend class Results;
 };

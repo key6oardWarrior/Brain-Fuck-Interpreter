@@ -51,9 +51,14 @@ public:
 	/// Open the users file via std::fstream
 	/// </summary>
 	/// <param name="filePath">- file path</param>
-	Interpreter(const std::string& filePath) { code.open(filePath); }
+	Interpreter(const std::string& filePath) { code.open(filePath, std::ios::in); }
 
-	~Interpreter() { code.close(); }
+	~Interpreter() {
+		code.close();
 
-	void startInterpreting(void);
+		delete mem;
+		mem = nullptr;
+	}
+
+	ErrorMessage startInterpreting(void);
 };
