@@ -2,9 +2,9 @@
 
 class Results : private Interpreter {
 public:
-	size_t timeInSeconds = 0;
-	size_t memoryBlocksUsed;
-	size_t totalDataUsed;
+	double timeInSeconds = 0;
+	double memoryBlocksUsed;
+	double totalDataUsed;
 
 	Results(const std::string& filePath) : Interpreter(filePath) {}
 	~Results() = default;

@@ -135,11 +135,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="MeasureResults.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Results.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MeasureResults.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Results.cpp" />
   </ItemGroup>
