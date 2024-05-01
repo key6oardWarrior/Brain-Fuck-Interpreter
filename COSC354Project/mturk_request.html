@@ -1,0 +1,41 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+  <crowd-instructions link-text="View instructions" link-type="button">
+    <detailed-instructions>
+      <h3>The purpose of this survey is to collect code written in the programming language Brain F*ck for an operating systems class project.</h3>
+      <p>This code will not be sold or used to train any models. Please answer the following three coding problems to the best of your ability without any outside aid. Prioritize runtime efficiency and memory efficiency in your code.</p>
+    </detailed-instructions>
+
+    <positive-example>
+      <p>Provide an example of a good answer here</p>
+      <p>Explain why it's a good answer</p>
+    </positive-example>
+
+    <negative-example>
+      <p>Provide an example of a bad answer here</p>
+      <p>Explain why it's a bad answer</p>
+    </negative-example>
+  </crowd-instructions>
+
+  <div>
+    <p>Coding Problem 1 - Return Factorial</p>
+    <crowd-text-area name="essay" rows="4" placeholder="..." required></crowd-text-area>
+  </div>
+
+  <div>
+    <p>Coding Problem 2 - Print Random String</p>
+    <crowd-text-area name="essay" rows="4" placeholder="..." required></crowd-text-area>
+  </div>
+  
+  <div>
+    <p>Coding Problem 3 - Spellcheck String</p>
+    <crowd-text-area name="essay" rows="4" placeholder="..." required></crowd-text-area>
+  </div>
+</crowd-form>
