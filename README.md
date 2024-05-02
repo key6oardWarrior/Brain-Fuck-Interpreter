@@ -26,8 +26,9 @@
   <li>Loops must start and end on the same line</li>
   <li>There are 30,000 memory blocks</li>
   <li>Each memory block is initialized with the value 0</li>
-  <li>Each memory block cannot be more than 0x7f (127)</li>
-  <li>Each memory block cannot be less than -0x80 (-128)</li>
+  <li>Each memory block cannot be more than 127</li>
+  <li>Each memory block cannot be less than -128</li>
+  <li>Attemping to go above 127, or below -128, will result in an error</li>
   <li>If during user input a user enter a std::string each char will be put in a memory block of it's own</li>
   <li>The BF code must be stored in a .bf file</li>
 </ol>
