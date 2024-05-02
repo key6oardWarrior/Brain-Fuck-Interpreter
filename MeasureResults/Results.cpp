@@ -4,8 +4,10 @@
 void Results::run() {
 	// track how long it takes to run the code
 	const std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
-	__super::startInterpreting();
+	ErrorMessage exitCode = __super::startInterpreting();
 	const std::chrono::steady_clock::time_point end = std::chrono::high_resolution_clock::now();
+
+	isSuccessful = exitCode == ErrorMessage::noError ? 1 : 0;
 
 	// store all relevant metrics
 	const std::chrono::duration<double, std::milli> elapsed = end - start;

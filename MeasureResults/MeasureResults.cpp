@@ -6,6 +6,7 @@ void setUpResults(std::map<std::string, double>& results) {
 	results["avg time"] = 0.0;
 	results["fastest time"] = -1.0;
 	results["slowest time"] = -1.0;
+	results["is successful"] = 0.0; // can be either 0.0 or 1.0
 
 	results["avg amount of memory blocks used"] = 0.0;
 	results["most amount of memory blocks used"] = 0.0;
@@ -16,45 +17,47 @@ void setUpResults(std::map<std::string, double>& results) {
 	results["avg amount of total memory used"] = 0.0;
 }
 
-void messureResults(size_t start, const size_t end, std::map<std::string, double>& measuredResults, const std::map<std::string, Results*>& tests) {
+void measureResults(size_t start, const size_t end, std::map<std::string, double>& measuredResults, std::map<std::string, Results*>& tests) {
 	auto itr = tests.begin();
 
 	for(start; start < end; ++start) {
-		measuredResults.at("avg amount of memory blocks used") += itr->second->memoryBlocksUsed;
-		measuredResults.at("avg amount of total memory used") += itr->second->totalDataUsed;
-		measuredResults.at("avg time") += itr->second->timeInSeconds;
+		measuredResults["avg amount of memory blocks used"] += itr->second->memoryBlocksUsed;
+		measuredResults["avg amount of total memory used"] += itr->second->totalDataUsed;
+		measuredResults["avg time"] += itr->second->timeInSeconds;
 
-		if(measuredResults.at("fastest time") < itr->second->timeInSeconds)
-			measuredResults.at("fastest time") = itr->second->timeInSeconds;
-		else if(measuredResults.at("fastest time") == -1.0)
-			measuredResults.at("fastest time") = itr->second->timeInSeconds;
+		if(measuredResults["fastest time"] < itr->second->timeInSeconds)
+			measuredResults["fastest time"] = itr->second->timeInSeconds;
+		else if(measuredResults["fastest time"] == -1.0)
+			measuredResults["fastest time"] = itr->second->timeInSeconds;
 
-		if(measuredResults.at("slowest time") > itr->second->timeInSeconds)
-			measuredResults.at("slowest time") = itr->second->timeInSeconds;
-		else if(measuredResults.at("slowest time") == -1.0)
-			measuredResults.at("slowest time") = itr->second->timeInSeconds;
+		if(measuredResults["slowest time"] > itr->second->timeInSeconds)
+			measuredResults["slowest time"] = itr->second->timeInSeconds;
+		else if(measuredResults["slowest time"] == -1.0)
+			measuredResults["slowest time"] = itr->second->timeInSeconds;
 
-		if(measuredResults.at("most amount of memory blocks used") < itr->second->memoryBlocksUsed)
-			measuredResults.at("most amount of memory blocks used") = itr->second->memoryBlocksUsed;
+		if(measuredResults["most amount of memory blocks used"] < itr->second->memoryBlocksUsed)
+			measuredResults["most amount of memory blocks used"] = itr->second->memoryBlocksUsed;
 
-		if(measuredResults.at("least amount of memory blocks used") > itr->second->memoryBlocksUsed)
-			measuredResults.at("least amount of memory blocks used") = itr->second->memoryBlocksUsed;
+		if(measuredResults["least amount of memory blocks used"] > itr->second->memoryBlocksUsed)
+			measuredResults["least amount of memory blocks used"] = itr->second->memoryBlocksUsed;
 
-		if(measuredResults.at("most amount of total memory used") < itr->second->totalDataUsed)
-			measuredResults.at("most amount of total memory used") = itr->second->totalDataUsed;
+		if(measuredResults["most amount of total memory used"] < itr->second->totalDataUsed)
+			measuredResults["most amount of total memory used"] = itr->second->totalDataUsed;
 
-		if(measuredResults.at("least amount of total memory used") > itr->second->totalDataUsed)
-			measuredResults.at("least amount of total memory used") = itr->second->totalDataUsed;
+		if(measuredResults["least amount of total memory used"] > itr->second->totalDataUsed)
+			measuredResults["least amount of total memory used"] = itr->second->totalDataUsed;
 
 		++itr;
 	}
 
-	measuredResults.at("avg amount of memory blocks used") /= end;
-	measuredResults.at("avg amount of total memory used") /= end;
-	measuredResults.at("avg time") /= end;
+	measuredResults["avg amount of memory blocks used"] /= end;
+	measuredResults["avg amount of total memory used"] /= end;
+	measuredResults["avg time"] /= end;
+	measuredResults["is successful"] = itr->second->isSuccessful;
 }
 
 void displayResults(std::map<std::string, double>& results) {
-	for (auto itr = results.begin(); itr != results.end(); ++itr)
-		std::cout << itr->first << ": " << itr->second;
+	int cnt = 0;
+	for(auto itr = results.begin(); itr != results.end(); ++itr)
+		std::cout << "Test #" << cnt++ << " " << itr->first << ": " << itr->second;
 }

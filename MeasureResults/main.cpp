@@ -17,8 +17,8 @@ int main(size_t argc, char* argv[]) {
 			throw std::filesystem::filesystem_error(msg, std::error_code());
 		}
 
-		resultsOfTest.emplace((argv[ii], new Results(argv[ii])));
-		threads.emplace_back(std::thread(&Results::run, resultsOfTest.at(argv[ii])));
+		resultsOfTest.insert(std::pair<std::string, Results*>(argv[ii], new Results(argv[ii])));
+		threads.emplace_back(std::thread(&Results::run, resultsOfTest[argv[ii]]));
 	}
 
 	// wait for all threads to stop
@@ -32,8 +32,8 @@ int main(size_t argc, char* argv[]) {
 	setUpResults(llmResults);
 
 	const size_t end = resultsOfTest.size()-2;
-	messureResults(0, end, humanResults, resultsOfTest);
-	messureResults(end, resultsOfTest.size(), llmResults, resultsOfTest);
+	measureResults(0, end, humanResults, resultsOfTest);
+	measureResults(end, resultsOfTest.size(), llmResults, resultsOfTest);
 	
 	// clean up memory
 	for(auto itr = resultsOfTest.begin(); itr != resultsOfTest.end(); ++itr) {
@@ -43,7 +43,7 @@ int main(size_t argc, char* argv[]) {
 
 	std::cout << "Human results:\n";
 	displayResults(humanResults);
-	std::cout << "LLM results:\n";
+	std::cout << "\nLLM results:\n";
 	displayResults(llmResults);
 
 	return EXIT_SUCCESS;
