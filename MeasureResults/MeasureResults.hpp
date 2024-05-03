@@ -13,7 +13,7 @@ void setUpResults(std::map<std::string, double>&);
 /// <param name="end">What is the last result to be measured</param>
 /// <param name="measuredResults">All results catagories that will be calculate and stored</param>
 /// <param name="tests">All test results</param>
-void measureResults(size_t, const size_t, std::map<std::string, double>&, std::map<std::string, Results*>&);
+void measureResults(size_t, const size_t, std::map<std::string, double>&, const std::map<std::string, Results*>&);
 
 /// <summary>
 /// Print all the results of both human and LLM's code

@@ -17,8 +17,12 @@ void setUpResults(std::map<std::string, double>& results) {
 	results["avg amount of total memory used"] = 0.0;
 }
 
-void measureResults(size_t start, const size_t end, std::map<std::string, double>& measuredResults, std::map<std::string, Results*>& tests) {
+void measureResults(size_t start, const size_t end, std::map<std::string, double>& measuredResults, const std::map<std::string, Results*>& tests) {
 	auto itr = tests.begin();
+	
+	size_t ii = 0;
+	while(ii++ < start)
+		++itr;
 
 	for(start; start < end; ++start) {
 		measuredResults["avg amount of memory blocks used"] += itr->second->memoryBlocksUsed;
