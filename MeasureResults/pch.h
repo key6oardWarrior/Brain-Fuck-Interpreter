@@ -8,4 +8,6 @@
 #include <mutex>
 #include <vector>
 
-#include "..\Interpreter\Interperter.hpp";
+#include "..\Interpreter\Interperter.hpp"
+#include "..\Results\Results.hpp"
+#include "..\Results\MeasureResults.hpp"

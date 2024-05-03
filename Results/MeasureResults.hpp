@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MEASURE_RESULTS_H
+#define MEASURE_RESULTS_H
 
 /// <summary>
 /// Create all the needed keys for both human and LLM results
@@ -20,3 +21,5 @@ void measureResults(size_t, const size_t, std::map<std::string, double>&, const 
 /// </summary>
 /// <param name="results"></param>
 void displayResults(std::map<std::string, double>&);
+
+#endif
