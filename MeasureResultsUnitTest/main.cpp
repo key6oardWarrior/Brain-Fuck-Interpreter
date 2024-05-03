@@ -1,9 +1,5 @@
 #include "pch.h"
 
-#include "..\Interpreter\Interperter.hpp"
-#include "..\MeasureResults\Results.hpp"
-#include "..\MeasureResults\MeasureResults.hpp"
-
 int main(void) {
 	std::map<std::string, Results*> tests;
 	const std::string errMsg = "measured results contains wrong value";

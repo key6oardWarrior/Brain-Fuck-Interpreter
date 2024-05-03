@@ -135,19 +135,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="MeasureResults.hpp" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Results.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MeasureResults.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Results.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Interpreter\Interpreter.vcxproj">
       <Project>{3cd199be-39ff-4512-b101-b35ab7eaca4d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Results\Results.vcxproj">
+      <Project>{72177be8-7bd7-4c63-acdf-550c16f9db6d}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
