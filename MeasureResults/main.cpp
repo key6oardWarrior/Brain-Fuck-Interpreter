@@ -1,6 +1,4 @@
 #include "pch.h"
-#include "Results.hpp"
-#include "MeasureResults.hpp"
 
 int main(size_t argc, char* argv[]) {
 	if(argc < 6)
