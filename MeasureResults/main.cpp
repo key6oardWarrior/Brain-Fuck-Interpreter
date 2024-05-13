@@ -47,9 +47,8 @@ int main(size_t argc, char* argv[]) {
 	checkStringResults(llmFactEnd, llmFixStrEnd, resultsOfTest, expectedSpelling);
 	checkStringResults(llmFixStrEnd, argc-1, resultsOfTest, expectedNames);
 
-	const size_t llmCodeIdx = std::stoi(argv[argc-1]);
-	measureResults(0, llmCodeIdx, humanResults, resultsOfTest);
-	measureResults(llmCodeIdx, resultsOfTest.size(), llmResults, resultsOfTest);
+	measureResults(0, totalHumanCode, humanResults, resultsOfTest);
+	measureResults(totalHumanCode, resultsOfTest.size(), llmResults, resultsOfTest);
 	
 	// clean up memory
 	for(auto itr = resultsOfTest.begin(); itr != resultsOfTest.end(); ++itr) {
