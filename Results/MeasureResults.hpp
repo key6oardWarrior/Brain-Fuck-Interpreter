@@ -1,5 +1,4 @@
-#ifndef MEASURE_RESULTS_H
-#define MEASURE_RESULTS_H
+#pragma once
 
 /// <summary>
 /// Create all the needed keys for both human and LLM results
@@ -20,6 +19,8 @@ void measureResults(size_t, const size_t, std::map<std::string, double>&, const 
 /// Print all the results of both human and LLM's code
 /// </summary>
 /// <param name="results"></param>
-void displayResults(std::map<std::string, double>&);
+void displayResults(std::map<std::string, double>& results);
 
-#endif
+void checkFactorialResults(size_t, const size_t, const std::map<std::string, Results*>&, const int);
+
+void checkStringResults(size_t, const size_t, const std::map<std::string, Results*>&, const std::vector<std::string>&);

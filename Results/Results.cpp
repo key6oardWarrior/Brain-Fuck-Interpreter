@@ -17,7 +17,7 @@ void Results::run() {
 
 	// count the amout of memory blocks used and total data used
 	for(int ii = 0; ii < 30'000; ++ii) {
-		if(__super::mem->memory[ii].value) {
+		if(__super::mem->memory[ii].value > 0) {
 			++memoryBlocksUsed;
 			totalDataUsed += __super::mem->memory[ii].value;
 		}

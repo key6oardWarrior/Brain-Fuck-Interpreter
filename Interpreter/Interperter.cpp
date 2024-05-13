@@ -111,6 +111,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 		case '.': // print
 		{
 			const char mp = mem->getMemoryAtCurrentIdx()->value;
+			printedValues->emplace_back(mp);
 
 			if(isprint(mp))
 				std::cout << mp;
@@ -191,7 +192,7 @@ ErrorMessage Interpreter::interpret(void) {
 	return errorMsg;
 }
 
-ErrorMessage Interpreter::startInterpreting(void) {
+ErrorMessage Interpreter::startInterpreting() {
 	ErrorMessage message = Interpreter::interpret();
 	std::cout << std::endl;
 

@@ -8,6 +8,7 @@ private:
 	const size_t maxInt = 127;
 	const int minInt = -128;
 	unsigned long long lineNum = 1;
+	std::vector<char>* printedValues;
 
 	/// <summary>
 	/// Print the error message's char, char's index, and what line it is on
@@ -51,13 +52,18 @@ public:
 	/// Open the users file via std::fstream
 	/// </summary>
 	/// <param name="filePath">- file path</param>
-	Interpreter(const std::string& filePath) { code.open(filePath, std::ios::in); }
+	Interpreter(const std::string& filePath, std::vector<char>* pValues={}) : printedValues(pValues) {
+		code.open(filePath, std::ios::in);
+		pValues = nullptr;
+	}
 
 	~Interpreter() {
 		code.close();
 
 		delete mem;
 		mem = nullptr;
+
+		printedValues = nullptr;
 	}
 
 	ErrorMessage startInterpreting(void);
