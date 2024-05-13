@@ -78,7 +78,7 @@ void checkFactorialResults(size_t start, const size_t end, const std::map<std::s
 		++itr;
 
 	while(start++ != end) {
-		itr->second->isSuccessful = ((*itr->second->printedValues)[0] == expectedResult);
+		itr->second->isSuccessful = itr->second->printedValues[0] == expectedResult;
 		++itr;
 	}
 }
@@ -93,8 +93,8 @@ void checkStringResults(size_t start, const size_t end, const std::map<std::stri
 	std::string allChars;
 	size_t expectedResultsIdx = 0;
 	while(ii++ != end) {
-		for(int jj = 0; jj < (*itr->second->printedValues).size(); ++jj) {
-			itr->second->isSuccessful = expectedResults[expectedResultsIdx].substr(jj, jj + 1) == std::to_string((*itr->second->printedValues)[jj]);
+		for(int jj = 0; jj < itr->second->printedValues.size(); ++jj) {
+			itr->second->isSuccessful = expectedResults[expectedResultsIdx].substr(jj, jj + 1) == std::to_string(itr->second->printedValues[jj]);
 
 			if(itr->second->isSuccessful == 0)
 				break;

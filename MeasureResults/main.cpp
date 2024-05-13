@@ -1,7 +1,7 @@
 #include "pch.h"
 
 int main(size_t argc, char* argv[]) {
-	if(argc > 1)
+	if(argc < 1)
 		throw std::runtime_error("Expected more than 1 command line argument");
 
 	std::map<std::string, Results*> resultsOfTest;
@@ -15,7 +15,8 @@ int main(size_t argc, char* argv[]) {
 			throw std::filesystem::filesystem_error(msg, std::error_code());
 		}
 
-		resultsOfTest.insert(std::pair<std::string, Results*>(argv[ii], new Results(argv[ii])));
+		std::vector<char> printedValues;
+		resultsOfTest.insert(std::pair<std::string, Results*>(argv[ii], new Results(argv[ii], printedValues)));
 		threads.emplace_back(std::thread(&Results::run, resultsOfTest[argv[ii]]));
 	}
 

@@ -4,9 +4,10 @@ int main(void) {
 	std::map<std::string, Results*> tests;
 	const std::string errMsg = "measured results contains wrong value";
 
-	tests["fileName"] = new Results("");
-	tests["fileName1"] = new Results("");
-	tests["fileName2"] = new Results("");
+	std::vector<char> printedValues;
+	tests["fileName"] = new Results("", printedValues);
+	tests["fileName1"] = new Results("", printedValues);
+	tests["fileName2"] = new Results("", printedValues);
 
 	tests["fileName"]->memoryBlocksUsed = 5;
 	tests["fileName"]->timeInSeconds = 10;

@@ -111,7 +111,7 @@ ErrorMessage Interpreter::isSymbolLegal(void) {
 		case '.': // print
 		{
 			const char mp = mem->getMemoryAtCurrentIdx()->value;
-			printedValues->emplace_back(mp);
+			printedValues.emplace_back(mp);
 
 			if(isprint(mp))
 				std::cout << mp;

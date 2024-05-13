@@ -20,7 +20,8 @@ int main(int argc, char* argv[]) {
 		std::cout << "code exited with code 8: File does not exists";
 	}
 
-	Interpreter interpreter(fileName);
+	std::vector<char> chars;
+	Interpreter interpreter(fileName, chars);
 	interpreter.startInterpreting();
 
 	system("pause");

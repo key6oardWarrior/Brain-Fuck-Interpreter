@@ -4,6 +4,7 @@ class InterpreterUnitTest : private Interpreter {
 private:
 	const std::string balancedCodeLine = "[[++]-- <<+-][[++--,.]][[<<<[+++][]]]";
 	const std::string balancedCodeLine2 = "[[[][[][][]]]]";
+	std::vector<char> chars;
 
 	/// <summary>
 	/// Set __super::mem to inital state
@@ -15,7 +16,7 @@ private:
 	}
 
 public:
-	InterpreterUnitTest(const std::string& filePath) : Interpreter(filePath) {}
+	InterpreterUnitTest(const std::string& filePath) : Interpreter(filePath, chars) {}
 	~InterpreterUnitTest() = default;
 
 	/// <summary>

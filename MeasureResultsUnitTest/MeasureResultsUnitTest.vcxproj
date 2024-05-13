@@ -145,9 +145,6 @@
     <ProjectReference Include="..\Interpreter\Interpreter.vcxproj">
       <Project>{3cd199be-39ff-4512-b101-b35ab7eaca4d}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\MeasureResults\MeasureResults.vcxproj">
-      <Project>{6fbd6426-a3b3-4a80-8d36-164a8abb5c14}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Results\Results.vcxproj">
       <Project>{72177be8-7bd7-4c63-acdf-550c16f9db6d}</Project>
     </ProjectReference>
