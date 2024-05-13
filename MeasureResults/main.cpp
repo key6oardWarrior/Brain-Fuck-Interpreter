@@ -7,11 +7,6 @@ int main(size_t argc, char* argv[]) {
 	std::map<std::string, Results*> resultsOfTest;
 	std::vector<std::thread> threads;
 
-	constexpr size_t humanFacts = 3;
-	constexpr size_t humanFixStr = humanFacts + 1;
-	constexpr size_t humanWoteName = humanFixStr + 3;
-	constexpr size_t totalHumanCode = 7;
-
 	for(int ii = 1; ii < argc-1; ++ii) {
 		if(std::filesystem::exists(std::filesystem::path(argv[ii])) == 0) {
 			std::string msg = "File, ";
@@ -35,6 +30,10 @@ int main(size_t argc, char* argv[]) {
 	setUpResults(llmResults);
 
 	// check human results
+	constexpr size_t humanFacts = 3;
+	constexpr size_t humanFixStr = humanFacts + 1;
+	constexpr size_t humanWoteName = humanFixStr + 3;
+	constexpr size_t totalHumanCode = 7;
 	std::vector<std::string> expectedNames = {"Micheal Sergio!", "xazonbi", "AMIT NAIK"};
 	std::vector<std::string> expectedSpelling = {"good bye world"};
 	checkFactorialResults(0, humanFacts, resultsOfTest, 5);
