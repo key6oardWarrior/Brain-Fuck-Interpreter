@@ -6,8 +6,9 @@ public:
 	double memoryBlocksUsed;
 	double totalDataUsed;
 	bool isSuccessful;
+	std::vector<char>* printedValues;
 
-	Results(const std::string& filePath) : Interpreter(filePath) {}
+	Results(const std::string& filePath) : Interpreter(filePath, printedValues) {}
 	~Results() = default;
 
 	/// <summary>
