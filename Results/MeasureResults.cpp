@@ -25,11 +25,9 @@ void measureResults(size_t start, const size_t end, std::map<std::string, double
 
 	for(start; start < end; ++start) {
 		if(itr->second->isSuccessful) {
-			if(itr->second->isSuccessful) {
-				measuredResults["avg amount of memory blocks used"] += itr->second->memoryBlocksUsed;
-				measuredResults["avg amount of total memory used"] += itr->second->totalDataUsed;
-				measuredResults["avg time"] += itr->second->timeInSeconds;
-			}
+			measuredResults["avg amount of memory blocks used"] += itr->second->memoryBlocksUsed;
+			measuredResults["avg amount of total memory used"] += itr->second->totalDataUsed;
+			measuredResults["avg time"] += itr->second->timeInSeconds;
 
 			if(measuredResults["fastest time"] < itr->second->timeInSeconds)
 				measuredResults["fastest time"] = itr->second->timeInSeconds;
