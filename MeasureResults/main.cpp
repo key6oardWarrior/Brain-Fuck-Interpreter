@@ -34,7 +34,7 @@ int main(size_t argc, char* argv[]) {
 	constexpr size_t humanFixStr = humanFacts + 1;
 	constexpr size_t humanWoteName = humanFixStr + 3;
 	constexpr size_t totalHumanCode = 7;
-	std::vector<std::string> expectedNames = {"Micheal Sergio!", "xazonbi", "AMIT NAIK"};
+	std::vector<std::string> expectedNames = {"AMIT NAIK", "Micheal Sergio!", "xazonbi"};
 	std::vector<std::string> expectedSpelling = {"good bye world"};
 	checkFactorialResults(0, humanFacts, resultsOfTest, 5);
 	checkStringResults(humanFacts, humanFixStr, resultsOfTest, expectedSpelling);
