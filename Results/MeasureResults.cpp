@@ -63,7 +63,7 @@ void measureResults(size_t start, const size_t end, std::map<std::string, double
 	if(measuredResults["avg amount of total memory used"] > 0)
 		measuredResults["avg amount of total memory used"] /= end;
 
-	if(measuredResults["avg time"])
+	if(measuredResults["avg time"] > 0)
 		measuredResults["avg time"] /= end;
 }
 
